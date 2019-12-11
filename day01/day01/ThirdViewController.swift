@@ -83,7 +83,7 @@ class ThirdViewController: UIViewController {
     
     @IBAction func closeThirdviewControllerButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        print("Close Thirt View Controller is tapped")
+        print("Close button is tapped")
     }
     
     /*

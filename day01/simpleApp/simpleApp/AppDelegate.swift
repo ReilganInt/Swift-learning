@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  day01
+//  simpleApp
 //
-//  Created by admin on 10/12/2019.
+//  Created by admin on 11/12/2019.
 //  Copyright © 2019 admin. All rights reserved.
 //
 
@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print(#function)
         // Override point for customization after application launch.
         return true
     }
