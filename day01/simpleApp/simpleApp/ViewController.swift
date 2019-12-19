@@ -71,6 +71,9 @@ class ViewController: UIViewController {
         
 
         timeLable?.text = String(format: "%02d", min) + ":" + String(format: "%02d", sec)
+        if seconds == 0 {
+            finishGame()
+        }
     }
     
     func finishGame() {
