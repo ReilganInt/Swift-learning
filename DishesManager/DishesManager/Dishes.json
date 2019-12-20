@@ -1,0 +1,37 @@
+{
+    "dishes":
+    [
+        {
+            "name" : "Carbonara",
+            "description" : "The most delisios pasta with souce",
+            "image" : "carbonara.png",
+            "recipe" :
+                [
+                    {
+                        "name": "Pasta",
+                        "weight" : 200.0
+                    },
+                    {
+                        "name": "Souce",
+                        "weight" : 80.0
+                    }
+                ]
+        },
+        {
+            "name" : "Pizza",
+            "description" : "The most easyly food",
+            "image" : "pizza.png",
+            "recipe" :
+                [
+                    {
+                        "name": "Dough",
+                        "weight" : 200.0
+                    },
+                    {
+                        "name": "Souce",
+                        "weight" : 100.0
+                    }
+                ]
+        }
+    ]
+}

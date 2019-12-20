@@ -1,14 +1,14 @@
 //
-//  RecipeTableViewCell.swift
-//  RecipeManager
+//  DishesTableViewCell.swift
+//  DishesManager
 //
-//  Created by admin on 19/12/2019.
+//  Created by admin on 20/12/2019.
 //  Copyright © 2019 Rinat Kutuev. All rights reserved.
 //
 
 import UIKit
 
-class RecipeTableViewCell: UITableViewCell {
+class DishesTableViewCell: UITableViewCell {
 
     //MARK: Properties
     
@@ -18,10 +18,13 @@ class RecipeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
 
 }

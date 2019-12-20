@@ -21,7 +21,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBOutlet weak var tableView: UITableView!
     
-    var recipe : Recipe?
+    var meal : Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
         
-        if recipe != nil {
+        if meal != nil {
             updateDetailview()
         }
         
@@ -111,8 +111,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let photo = photoImageView.image
         let description = descriptionTextView.text ?? ""
         
-        // Set the recipe to be passed to RecipeTableViewController after the unwind segue.
-        recipe = Recipe(name: name, description: description, image: photo)
+        // Set the recipe to be passed to MealTableViewController after the unwind segue.
+        //meal = Meal(name: name, description: description, image: photo)
     }
     
     //MARK: Private Methods
@@ -124,9 +124,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     private func updateDetailview() {
-        photoImageView.image = recipe?.image
-        nameTextField.text = recipe?.name
-        descriptionTextView.text = recipe?.description
+        //photoImageView.image = meal?.image
+        nameTextField.text = meal?.name
+        descriptionTextView.text = meal?.description
     }
 
 }

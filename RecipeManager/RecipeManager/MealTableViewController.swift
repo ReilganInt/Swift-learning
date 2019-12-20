@@ -1,5 +1,5 @@
 //
-//  RecipesTableViewController.swift
+//  MealTableViewController.swift
 //  RecipeManager
 //
 //  Created by admin on 19/12/2019.
@@ -8,25 +8,42 @@
 
 import UIKit
 
-class RecipesTableViewController: UITableViewController {
+class MealTableViewController: UITableViewController {
 
     //MARK:  - Properties
     
+    // manager: RecipeManager
+    
     @IBOutlet weak var recipeTableView: UITableView!
     
-    var recipes = [Recipe]()
+    
     var isEditingRecipe: Bool = false
     var editingRecipeRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // manage = RecipeManager()
 
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         
-        // Load Sample Recipes
+        if let path = Bundle.main.path(forResource: "Dishes", ofType: "json") {
+            do {
+                  let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                  let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                
+                  debugPrint(jsonResult)
+                
+                
+                
+              } catch {
+                   // handle error
+              }
+        }
+        
+        // Load Sample Recipes 
         loadSampleRecipes()
     }
 
@@ -37,22 +54,27 @@ class RecipesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        return  5 //meal.count
     }
+    
+    /*
+        создаем нотификацию (почитать) и вызываем функцию update()
+     
+     */
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let recipeIdentiferCell = "recipeIdentiferCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: recipeIdentiferCell, for: indexPath) as? RecipeTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: recipeIdentiferCell, for: indexPath) as? MealTableViewCell else {
             return UITableViewCell()
         }
         
-        let item = recipes[indexPath.row]
-        cell.nameLabel.text = item.name
-        cell.descriptionLabel.text = item.description
-        cell.photoImageView.image = item.image
+//        let item = manager.getItem(for: indexPath.row)
+//        cell.nameLabel.text =
+//        cell.descriptionLabel.text = item.description
+//        cell.photoImageView.image = item.image
 
         return cell
     }
@@ -66,7 +88,7 @@ class RecipesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            recipes.remove(at: indexPath.row)
+           // meal.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -76,11 +98,11 @@ class RecipesTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? DetailViewController, let recipe = sourceViewController.recipe {
+        if let sourceViewController = sender.source as? DetailViewController, let recipe = sourceViewController.meal {
             
             if isEditingRecipe {
                 if editingRecipeRow != nil {
-                    recipes[editingRecipeRow!] = recipe
+                    //meal[editingRecipeRow!] = recipe
                     isEditingRecipe = false
                     editingRecipeRow = nil
                     tableView.reloadData()
@@ -88,10 +110,10 @@ class RecipesTableViewController: UITableViewController {
             } else {
             
                 // Add a new recipe
-                let newIndexPath = IndexPath(row: recipes.count, section: 0)
+                // let newIndexPath = IndexPath(row: meal.count, section: 0)
                 
-                recipes.append(recipe)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
+              //  meal.append(recipe)
+              //  tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
     }
@@ -104,7 +126,7 @@ class RecipesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier {
             if let idItem = tableView.indexPathForSelectedRow?.row {
-                (segue.destination as? DetailViewController)?.recipe = recipes[idItem]
+//                (segue.destination as? DetailViewController)?.meal = meal[idItem]
                 isEditingRecipe = true
                 editingRecipeRow = idItem
             }
@@ -115,20 +137,16 @@ class RecipesTableViewController: UITableViewController {
     
     private func loadSampleRecipes() {
         
-        let photo1 = UIImage(named: "carbonara")
-        let photo2 = UIImage(named: "cheesecake")
-        let photo3 = UIImage(named: "pizza")
+//        var dishes = [Meal]()
+//
+//        var recipe1 = Meal()
+//        var recipe2 = Meal()
+//        var recipe3 = Meal()
+//
         
-        guard let recipe1 = Recipe(name: "Carbonara", description: "Just a handful of ingredients makes a fantastic carbonara and, done properly, it’s a thing of beauty.", image: photo1) else {
-            fatalError("Unable to instantiate recipe1") }
-        guard let recipe2 = Recipe(name: "Cheesecake", description: "Cheesecake is a sweet dessert consisting of one or more layers.", image: photo2) else {
-            fatalError("Unable to instantiate recipe2") }
-        guard let recipe3 = Recipe(name: "Pizza", description: "Pizza is a savory dish of Italian origin, consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients", image: photo3) else {
-            fatalError("Unable to instantiate recipe3") }
         
-        recipes.append(recipe1)
-        recipes.append(recipe2)
-        recipes.append(recipe3)
+//        dishes += [recipe1, recipe2, recipe3]
+
     }
 
 }
