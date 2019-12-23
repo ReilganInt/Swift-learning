@@ -11,98 +11,77 @@ import UIKit
 class DishesTableViewController: UITableViewController {
     
     //MARK: Properties
-    
-    var dishes: Dishes?
-//    var manager: RecipeManager
+
+    var manager: Manager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(method), name: "didViewBac", object: <#T##Any?#>)
-        // Create connection with FireBase
-        let dataUrl = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/document.json?alt=media&token=7908df94-e975-4a33-99fb-5fd647cc672d"
-            
-        guard let data = try? Data(contentsOf: URL(string: dataUrl)!) else {
-            print("Cant connect to the FireBase with this token")
-            return
-        }
         
-        dishes = try? JSONDecoder().decode(Dishes.self, from: data)
-        
-//        manager = RecipeManager()
-        
-        print(dishes)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        NotificationCenter.default.addObserver(self, selector: #selector(test), name: NotificationConstants.dishesDidLoad, object: nil)
+        manager = Manager()
+        manager?.loadData()
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return manager?.getDishesCount() ?? 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        
+        let dishesIdentiferCell = DishesTableViewCell.identiferCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: dishesIdentiferCell, for: indexPath) as? DishesTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        guard let item = manager?.getItem(for: indexPath.row) else {
+            return UITableViewCell()
+        }
+        
+        cell.nameLabel.text = item.name
+        cell.descriptionLabel.text = item.description
+        cell.photoImageView.image = UIImage(named: item.image)
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = manager?.getItem(for: indexPath.row) else { return }
+        guard let vc = storyboard?.instantiateViewController(identifier: StoryboardIdConstants.detail) as? DetailViewController else {
+            return
+        }
+        vc.dish = data
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+        // navigation controller (push, pop)
+        // present
+        // navigationBar (navigationItem)
+        
+        // tapBarViewController (little bit)
+        
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+
+    @objc func test(){
+        debugPrint("TEST!!!!!!!!!!!!!!!!!\n\n\n\n\n")
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destinationVC = segue.destination as? DetailViewController {
+            destinationVC.dish = manager?.getItem(for: (tableView?.indexPathForSelectedRow!.row)!)
+        }
     }
-    */
 
 }
+

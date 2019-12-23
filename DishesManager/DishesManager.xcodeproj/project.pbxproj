@@ -14,9 +14,14 @@
 		844BDB4623ACEB0100FC3815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844BDB4423ACEB0100FC3815 /* LaunchScreen.storyboard */; };
 		844BDB5023ACEDB400FC3815 /* DishesStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844BDB4F23ACEDB400FC3815 /* DishesStruct.swift */; };
 		844BDB5623AD02B300FC3815 /* Dishes.json in Resources */ = {isa = PBXBuildFile; fileRef = 844BDB5523AD02B300FC3815 /* Dishes.json */; };
+		845F196923B0BC990026916B /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F196823B0BC990026916B /* Manager.swift */; };
+		845F196B23B0C77D0026916B /* NotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F196A23B0C77D0026916B /* NotificationConstants.swift */; };
+		845F196E23B0E17B0026916B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F196D23B0E17B0026916B /* DetailViewController.swift */; };
+		845F197123B0E55B0026916B /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F197023B0E55B0026916B /* RecipeTableViewController.swift */; };
+		845F197323B0E5710026916B /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F197223B0E5710026916B /* RecipeTableViewCell.swift */; };
+		845F197523B0E7FA0026916B /* StoryboardIdConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F197423B0E7FA0026916B /* StoryboardIdConstants.swift */; };
 		84BC0A6A23AD0E3100B61CC6 /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC0A6923AD0E3100B61CC6 /* DishesTableViewCell.swift */; };
 		84BC0A6C23AD0FBE00B61CC6 /* DishesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC0A6B23AD0FBE00B61CC6 /* DishesTableViewController.swift */; };
-		84BC0A6F23AD10BD00B61CC6 /* RecipeManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC0A6E23AD10BD00B61CC6 /* RecipeManagerClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +34,14 @@
 		844BDB4723ACEB0100FC3815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844BDB4F23ACEDB400FC3815 /* DishesStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesStruct.swift; sourceTree = "<group>"; };
 		844BDB5523AD02B300FC3815 /* Dishes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dishes.json; sourceTree = "<group>"; };
+		845F196823B0BC990026916B /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		845F196A23B0C77D0026916B /* NotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConstants.swift; sourceTree = "<group>"; };
+		845F196D23B0E17B0026916B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		845F197023B0E55B0026916B /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
+		845F197223B0E5710026916B /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		845F197423B0E7FA0026916B /* StoryboardIdConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdConstants.swift; sourceTree = "<group>"; };
 		84BC0A6923AD0E3100B61CC6 /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
 		84BC0A6B23AD0FBE00B61CC6 /* DishesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewController.swift; sourceTree = "<group>"; };
-		84BC0A6E23AD10BD00B61CC6 /* RecipeManagerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManagerClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +74,9 @@
 		844BDB3823ACEB0100FC3815 /* DishesManager */ = {
 			isa = PBXGroup;
 			children = (
-				84BC0A6D23AD10A600B61CC6 /* RecipeManager */,
+				845F196F23B0E5450026916B /* Recipe */,
+				845F196C23B0E1140026916B /* Detail */,
+				845F196723B0BC4C0026916B /* Manager */,
 				84BC0A6823AD0CA200B61CC6 /* Dishes */,
 				844BDB5523AD02B300FC3815 /* Dishes.json */,
 				844BDB3923ACEB0100FC3815 /* AppDelegate.swift */,
@@ -77,6 +89,33 @@
 			path = DishesManager;
 			sourceTree = "<group>";
 		};
+		845F196723B0BC4C0026916B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				845F196823B0BC990026916B /* Manager.swift */,
+				845F196A23B0C77D0026916B /* NotificationConstants.swift */,
+				845F197423B0E7FA0026916B /* StoryboardIdConstants.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		845F196C23B0E1140026916B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				845F196D23B0E17B0026916B /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		845F196F23B0E5450026916B /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				845F197023B0E55B0026916B /* RecipeTableViewController.swift */,
+				845F197223B0E5710026916B /* RecipeTableViewCell.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
 		84BC0A6823AD0CA200B61CC6 /* Dishes */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,14 +124,6 @@
 				844BDB4F23ACEDB400FC3815 /* DishesStruct.swift */,
 			);
 			path = Dishes;
-			sourceTree = "<group>";
-		};
-		84BC0A6D23AD10A600B61CC6 /* RecipeManager */ = {
-			isa = PBXGroup;
-			children = (
-				84BC0A6E23AD10BD00B61CC6 /* RecipeManagerClass.swift */,
-			);
-			path = RecipeManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,12 +198,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BC0A6F23AD10BD00B61CC6 /* RecipeManagerClass.swift in Sources */,
+				845F197123B0E55B0026916B /* RecipeTableViewController.swift in Sources */,
+				845F197323B0E5710026916B /* RecipeTableViewCell.swift in Sources */,
 				84BC0A6C23AD0FBE00B61CC6 /* DishesTableViewController.swift in Sources */,
+				845F196923B0BC990026916B /* Manager.swift in Sources */,
 				844BDB3A23ACEB0100FC3815 /* AppDelegate.swift in Sources */,
+				845F196B23B0C77D0026916B /* NotificationConstants.swift in Sources */,
 				844BDB5023ACEDB400FC3815 /* DishesStruct.swift in Sources */,
 				84BC0A6A23AD0E3100B61CC6 /* DishesTableViewCell.swift in Sources */,
+				845F197523B0E7FA0026916B /* StoryboardIdConstants.swift in Sources */,
 				844BDB3C23ACEB0100FC3815 /* SceneDelegate.swift in Sources */,
+				845F196E23B0E17B0026916B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

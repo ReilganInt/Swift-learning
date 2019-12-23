@@ -18,12 +18,13 @@ struct Dishes: Decodable {
         case dishes
     }
     
+    //MARK: Initializations
+    
     init(from decoder: Decoder) throws {
         let container = try! decoder.container(keyedBy: CodingKeys.self)
         self.dishes = try! container.decode([Dish].self, forKey: .dishes)
     }
-    
-    //MARK: Initializations
+
 }
     
 struct Dish : Decodable {

@@ -1,37 +1,34 @@
 {
-    "dishes":
-    [
+  "dishes": [
+    {
+      "name": "Carbonara",
+      "description": "The most delisios pasta with souce",
+      "image": "carbonara",
+      "recipe": [
         {
-            "name" : "Carbonara",
-            "description" : "The most delisios pasta with souce",
-            "image" : "carbonara.png",
-            "recipe" :
-                [
-                    {
-                        "name": "Pasta",
-                        "weight" : 200.0
-                    },
-                    {
-                        "name": "Souce",
-                        "weight" : 80.0
-                    }
-                ]
+          "name": "Pasta",
+          "weight": 200
         },
         {
-            "name" : "Pizza",
-            "description" : "The most easyly food",
-            "image" : "pizza.png",
-            "recipe" :
-                [
-                    {
-                        "name": "Dough",
-                        "weight" : 200.0
-                    },
-                    {
-                        "name": "Souce",
-                        "weight" : 100.0
-                    }
-                ]
+          "name": "Souce",
+          "weight": 80
         }
-    ]
+      ]
+    },
+    {
+      "name": "Pizza",
+      "description": "The most easyly food",
+      "image": "pizza",
+      "recipe": [
+        {
+          "name": "Dough",
+          "weight": 200
+        },
+        {
+          "name": "Souce",
+          "weight": 100
+        }
+      ]
+    }
+  ]
 }

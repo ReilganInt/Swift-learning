@@ -6,6 +6,14 @@
 //  Copyright © 2019 Rinat Kutuev. All rights reserved.
 //
 
+import UIKit
+
 class RecipeManager {
+    
+
+    
+    
+    
+    
     //
 }
