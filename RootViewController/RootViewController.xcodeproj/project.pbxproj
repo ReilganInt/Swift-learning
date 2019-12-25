@@ -16,7 +16,6 @@
 		845569CC23B24108001BF324 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845569CA23B24108001BF324 /* LaunchScreen.storyboard */; };
 		845569D723B2460E001BF324 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845569BF23B24108001BF324 /* AppDelegate.swift */; };
 		845569D923B24626001BF324 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845569D523B24496001BF324 /* MainViewController.swift */; };
-		845569DC23B2488D001BF324 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845569DB23B2488D001BF324 /* SplashViewController.swift */; };
 		845B630E23B3849600DCE4F1 /* DishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B630D23B3849600DCE4F1 /* DishesModel.swift */; };
 		846F950123B26B91000CC1EA /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950023B26B91000CC1EA /* Manager.swift */; };
 		846F950323B2711B000CC1EA /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950223B2711B000CC1EA /* DishesTableViewCell.swift */; };
@@ -34,7 +33,6 @@
 		845569CB23B24108001BF324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		845569CD23B24108001BF324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845569D523B24496001BF324 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		845569DB23B2488D001BF324 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		845B630D23B3849600DCE4F1 /* DishesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DishesModel.swift; path = RootViewController/Modules/Detail/DishesModel.swift; sourceTree = SOURCE_ROOT; };
 		846F950023B26B91000CC1EA /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		846F950223B2711B000CC1EA /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
@@ -57,14 +55,6 @@
 				8447376A23B3587A0093B9C4 /* RecipeDelegate.swift */,
 			);
 			path = Delegates;
-			sourceTree = "<group>";
-		};
-		8447376E23B377230093B9C4 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				845569DB23B2488D001BF324 /* SplashViewController.swift */,
-			);
-			path = Splash;
 			sourceTree = "<group>";
 		};
 		8447376F23B3772D0093B9C4 /* Main */ = {
@@ -136,7 +126,6 @@
 		845569DA23B2475D001BF324 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				8447376E23B377230093B9C4 /* Splash */,
 				8447376F23B3772D0093B9C4 /* Main */,
 				8447377023B377320093B9C4 /* Detail */,
 				8447377123B377370093B9C4 /* Recipe */,
@@ -248,7 +237,6 @@
 				846F950123B26B91000CC1EA /* Manager.swift in Sources */,
 				8447376D23B363CF0093B9C4 /* DetailDelegate.swift in Sources */,
 				8447376B23B3587A0093B9C4 /* RecipeDelegate.swift in Sources */,
-				845569DC23B2488D001BF324 /* SplashViewController.swift in Sources */,
 				8447376923B358520093B9C4 /* RecipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

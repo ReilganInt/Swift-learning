@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     //MARK: - Properties
+    
     var dish: Dish?
         
     var detailView: UIScrollView!
