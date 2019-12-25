@@ -59,7 +59,7 @@ class DishesTableViewController: UITableViewController {
         }
         vc.dish = data
         navigationController?.pushViewController(vc, animated: true)
-        
+        detail()
         
         // navigation controller (push, pop)
         // present
@@ -69,19 +69,12 @@ class DishesTableViewController: UITableViewController {
         
     }
 
+    private func detail() {
+        AppDelegate.shared.rootViewController.switchToDetailScreen()
+    }
 
     @objc func test(){
         debugPrint("TEST!!!!!!!!!!!!!!!!!\n\n\n\n\n")
     }
-
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? DetailViewController {
-            destinationVC.dish = manager?.getItem(for: (tableView?.indexPathForSelectedRow!.row)!)
-        }
-    }
-
 }
 

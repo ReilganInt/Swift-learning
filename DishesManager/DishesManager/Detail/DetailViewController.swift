@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class DetailViewController: UIViewController {
 
@@ -28,9 +29,12 @@ class DetailViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        
     }
     
     
@@ -39,5 +43,8 @@ class DetailViewController: UIViewController {
         nameTextView.text = dish?.name
         descriptionTextView.text = dish?.description
     }
+
+    
+    
 
 }
