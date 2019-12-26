@@ -8,13 +8,16 @@
 
 import UIKit
 
-// https://swiftbook.ru/content/languageguide/closures/         - Solved,  но все равно нужно посмотреть еще видосики и пописать еще пару раз
-// Удалить splashVC и добавить индикатор на mainVC              - Solved
-// Включить спиннер                                             - Solved
-// Скачивать данные при помощи URLSession                       - Solved
-// Закрыть спиннер когда скачали данные или получили ошибку     - Solved
-// Если ошибка - выдать Алерт                                   - Solved
-// Сортировка по clouser                                        - Solved
+// Подключить alamofire
+// Сделать загрузку через него
+// DetailVC autolayouts
+
+// SnapKit install
+// DishesTableViewCell сделать при помощи snapKit
+// DetailVC при помощи snapKit
+// Нажимать на content table view cell (clips to bounds)
+
+
 
 
 class MainViewController: UIViewController{
@@ -28,6 +31,11 @@ class MainViewController: UIViewController{
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NotificationConstants.URLSessinHasError, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NotificationConstants.dataLoaded, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +44,8 @@ class MainViewController: UIViewController{
         
         //Notification Center
         NotificationCenter.default.addObserver(self, selector: #selector(errorAlert), name: NotificationConstants.URLSessinHasError, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NotificationConstants.dataLoaded, object: nil)
+
         
         // AddSubviews
         tableView = UITableView(frame: view.frame)
@@ -63,6 +73,8 @@ class MainViewController: UIViewController{
         navigationItem.hidesBackButton = true
     }
     
+
+    
     override func viewDidAppear(_ animated: Bool) {
         
     }
@@ -78,9 +90,15 @@ class MainViewController: UIViewController{
         let alertController = UIAlertController(title: "Error", message: "URLSession has some error", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
+        activityIndicator.stopAnimating()
         self.present(alertController, animated: true, completion: nil)
         
         return
+    }
+    
+    @objc func reloadData() {
+        activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
     
     //MARK: - Private Methods
@@ -96,10 +114,6 @@ class MainViewController: UIViewController{
         activityIndicator.startAnimating()
         manager = Manager()
         manager?.loadData()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) { [weak self] in
-            self?.activityIndicator.stopAnimating()
-            self?.tableView.reloadData()
-        }
     }
     
 
@@ -145,6 +159,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 extension MainViewController: DetailDelegate {
 
     func sentMessageToChangeTitle() {
-        navigationItem.title = "text kek"
+        navigationItem.title = "New title"
     }
 }

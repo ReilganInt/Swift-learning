@@ -8,25 +8,31 @@
 
 import UIKit
 
+
 enum ManagerConstants {
-    static let loadURlString = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/Dishes.json?alt=media&token=f0c54eb1-d8fa-47fd-9a3d-93571fba7a2f"
+    static let loadURlString = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/Dishes.json?alt=media&token=77cbc956-e7f6-490e-aef5-6dc18b9ee251"
     static let URLSessionErrorHasError = Notification.Name("URLSessionErrorHasError")
     static let URLSessionResponseHasError = Notification.Name("URLSessionResponseHasError")
-    static let URLSessionDataHasError = Notification.Name("URLSessionDataHasError")
+    static let urlSessionDataHasError = Notification.Name("URLSessionDataHasError")
 }
 
 enum NotificationConstants {
-    static let dishesDidLoad = Notification.Name("DishesDidLoad")
+    static let dataLoaded = Notification.Name("dataLoaded")
     static let URLSessinHasError = Notification.Name("URLSessinHasError")
+}
+
+enum ManagerNotificationType: String {
+    case error = "urlSessinHasError"
+    case loaded = "dataLoaded"
 }
 
 class Manager {
     
     //MARK: Prorepties
-    
+       
     private var dishes: [Dish]? {
         didSet {
-            postNotification()
+            postNotification(type: .loaded)
         }
     }
     
@@ -59,50 +65,42 @@ class Manager {
             
             guard error == nil else {
                 // Alert
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: NotificationConstants.URLSessinHasError, object: nil)
-                }
+                self.postNotification(type: .error)
+                
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse,
                 (100...299).contains(httpResponse.statusCode) else {
-                // Alert
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: NotificationConstants.URLSessinHasError, object: nil)
-
-                }
-                return
+                    // Alert
+                    self.postNotification(type: .error)
+                    return
             }
             
             guard let mimeType = httpResponse.mimeType, mimeType == "application/json",
                 let data = data,
-                let model = try? JSONDecoder().decode(DishesModel.self, from: data) else {
+                var model = try? JSONDecoder().decode(DishesModel.self, from: data) else {
                     // Alert
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: NotificationConstants.URLSessinHasError, object: nil)
-                    }
+                    self.postNotification(type: .error)
                     return
             }
             
-            let old = model.dishes
-            let new = old.sorted(by: self.sortAlphabet)
-            self.dishes = new
-
+            model.dishes.sort { $0.name < $1.name }
+            
+            self.dishes = model.dishes
+            
         }
         
         task.resume()
     }
     
     
-    func sortAlphabet(_ d1: Dish, _ d2: Dish) -> Bool {
-        return d1.name < d2.name
-    }
-    
     //MARK: Private Methods
-    
-    private func postNotification() {
-        NotificationCenter.default.post(name: NotificationConstants.dishesDidLoad, object: nil)
+    private func postNotification(type: ManagerNotificationType) {
+        DispatchQueue.main.async {
+            let notificationName = Notification.Name(type.rawValue)
+            NotificationCenter.default.post(name: notificationName, object: nil)
+        }
     }
     
 }
