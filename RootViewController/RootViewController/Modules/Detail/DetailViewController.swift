@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    //MARK: - Properties
+    //MARK:  Properties
     
     var dish: Dish?
         

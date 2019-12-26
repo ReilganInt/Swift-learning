@@ -11,6 +11,8 @@ import UIKit
 
 enum ManagerConstants {
     static let loadURlString = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/Dishes.json?alt=media&token=77cbc956-e7f6-490e-aef5-6dc18b9ee251"
+    
+    // TODO: Константы для точной передачи ошибки, добавить в последствии
     static let URLSessionErrorHasError = Notification.Name("URLSessionErrorHasError")
     static let URLSessionResponseHasError = Notification.Name("URLSessionResponseHasError")
     static let urlSessionDataHasError = Notification.Name("URLSessionDataHasError")

@@ -69,7 +69,7 @@ class MainViewController: UIViewController{
         let addNewDishButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDish))
         navigationItem.setRightBarButton(addNewDishButton, animated: true)
         
-        // Временно
+        // FIXME: Left navigation button
         navigationItem.hidesBackButton = true
     }
     
@@ -84,7 +84,7 @@ class MainViewController: UIViewController{
     }
     
     
-    // func errorAlert(message: String)
+    // TODO: func errorAlert(message: String)
     @objc func errorAlert() {
         
         let alertController = UIAlertController(title: "Error", message: "URLSession has some error", preferredStyle: .alert)
@@ -155,7 +155,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-//MARK: - Delegate method
+//MARK:  Delegate method
 extension MainViewController: DetailDelegate {
 
     func sentMessageToChangeTitle() {

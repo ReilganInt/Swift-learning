@@ -29,7 +29,7 @@ struct DishesModel: Codable {
     
 struct Dish : Codable {
     
-    //MARK: Proeperties
+    //MARK:  Properties
     
     var name: String
     var description: String
@@ -59,7 +59,7 @@ struct Dish : Codable {
 
 struct Recipe : Codable {
     
-    //MARK: Properties
+    //MARK:  Properties
     
     var name : String
     var weight : Double
