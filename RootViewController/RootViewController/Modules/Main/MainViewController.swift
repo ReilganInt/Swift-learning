@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Задания:
+
 // Подключить alamofire
 // Сделать загрузку через него
 // DetailVC autolayouts
@@ -17,7 +19,8 @@ import UIKit
 // DetailVC при помощи snapKit
 // Нажимать на content table view cell (clips to bounds)
 
-
+// Подключить coreData
+// Вести запись блюд, в первую очередь качать блюда из локального хранилища
 
 
 class MainViewController: UIViewController{
@@ -73,12 +76,7 @@ class MainViewController: UIViewController{
         navigationItem.hidesBackButton = true
     }
     
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
+    // TODO: Функция для добавления нового блюда на главный экран
     @objc func addNewDish() {
             
     }
