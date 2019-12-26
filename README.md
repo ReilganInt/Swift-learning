@@ -1,6 +1,6 @@
-# piscineSwift
 
 # RootViewController:
+
 Изучал: 
 
 - Delegate
@@ -15,6 +15,14 @@
 - Protocol Codable
 
 # Day00
+
 Изучал:
 
 - Storyboard
+
+# UIViewCycle
+
+Изучал:
+
+- Жизненный цикл UIView
+- Жизненный цикл UIViewController
