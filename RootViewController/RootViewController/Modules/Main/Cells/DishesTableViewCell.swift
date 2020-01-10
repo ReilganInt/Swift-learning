@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DishesTableViewCell: UITableViewCell {
     
@@ -15,9 +16,26 @@ class DishesTableViewCell: UITableViewCell {
     static let cellId = "cellId"
     
     var safeArea: UILayoutGuide!
-    let imageIV = UIImageView()
-    let nameLabel = UILabel()
-    let descriptionLabel = UILabel()
+    
+    let imageIV: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleToFill
+        iv.layer.cornerRadius = 20
+        iv.layer.masksToBounds = true
+        return iv
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    //MARK: Initializations
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,29 +58,28 @@ class DishesTableViewCell: UITableViewCell {
     
     func setupImageView() {
         addSubview(imageIV)
-        
-        imageIV.translatesAutoresizingMaskIntoConstraints = false
-        imageIV.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
-        imageIV.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        imageIV.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageIV.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        imageIV.snp.makeConstraints { (make) -> Void in
+            make.left.top.equalTo(0)
+            make.width.height.equalTo(90)
+        }
     }
     
     func setupNameLabel() {
         addSubview(nameLabel)
-        
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.leadingAnchor.constraint(equalTo: imageIV.trailingAnchor, constant: 10).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(5)
+            make.left.equalTo(imageIV.snp.right).offset(5)
+            make.right.equalTo(-5)
+        }
     }
     
     func setupDescriptionLabel() {
         addSubview(descriptionLabel)
-        
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
-        descriptionLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
+        descriptionLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.left.equalTo(nameLabel)
+            make.right.equalTo(-5)
+        }
     }
     
 }

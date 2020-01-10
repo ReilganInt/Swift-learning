@@ -7,15 +7,11 @@
 //
 
 import UIKit
+import Alamofire
 
 
 enum ManagerConstants {
-    static let loadURlString = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/Dishes.json?alt=media&token=77cbc956-e7f6-490e-aef5-6dc18b9ee251"
-    
-    // TODO: Константы для точной передачи ошибки, добавить в последствии
-    static let URLSessionErrorHasError = Notification.Name("URLSessionErrorHasError")
-    static let URLSessionResponseHasError = Notification.Name("URLSessionResponseHasError")
-    static let urlSessionDataHasError = Notification.Name("URLSessionDataHasError")
+    static let loadURlString = "https://firebasestorage.googleapis.com/v0/b/recipes-64c49.appspot.com/o/new.json?alt=media&token=75c47e63-2756-4f6f-b982-1f98072cd5ac"
 }
 
 enum NotificationConstants {
@@ -24,7 +20,7 @@ enum NotificationConstants {
 }
 
 enum ManagerNotificationType: String {
-    case error = "urlSessinHasError"
+    case error = "URLSessinHasError"
     case loaded = "dataLoaded"
 }
 
@@ -63,37 +59,21 @@ class Manager {
         
         guard let url = URL(string: ManagerConstants.loadURlString) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            
-            guard error == nil else {
-                // Alert
-                self.postNotification(type: .error)
+        AF.request(url)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseData { response in
                 
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                (100...299).contains(httpResponse.statusCode) else {
-                    // Alert
+            switch response.result {
+                case .success(let value):
+                    var model = try? JSONDecoder().decode(DishesModel.self, from: value)
+                    model?.dishes.sort { $0.name < $1.name }
+                    self.dishes = model?.dishes
+                case .failure( _):
                     self.postNotification(type: .error)
-                    return
             }
-            
-            guard let mimeType = httpResponse.mimeType, mimeType == "application/json",
-                let data = data,
-                var model = try? JSONDecoder().decode(DishesModel.self, from: data) else {
-                    // Alert
-                    self.postNotification(type: .error)
-                    return
-            }
-            
-            model.dishes.sort { $0.name < $1.name }
-            
-            self.dishes = model.dishes
-            
         }
         
-        task.resume()
     }
     
     

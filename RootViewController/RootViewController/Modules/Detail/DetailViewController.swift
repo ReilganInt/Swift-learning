@@ -7,75 +7,86 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailViewController: UIViewController {
     
     //MARK:  Properties
     
     var dish: Dish?
-        
-    var detailView: UIScrollView!
-    var recipeButton: UIButton!
-    var imageView = UIImageView()
+    
+    var detailView: UIView = {
+        let detailView = UIView()
+        detailView.backgroundColor = .white
+        return detailView
+    }()
+    
+    var imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleToFill
+        iv.layer.cornerRadius = 20
+        iv.layer.masksToBounds = true
+        return iv
+    }()
+    
+    var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    var safeArea: UILayoutGuide!
     
     weak var delegate: DetailDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        safeArea = view.layoutMarginsGuide
+        let recipeButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(makeRecipeViewController))
+        navigationItem.setRightBarButton(recipeButton, animated: true)
         setupDetailView()
     }
-    
     
     //MARK: - Setup Methods
     
     private func setupDetailView() {
-    
-        setupSrollView()
+        setupView()
         setupImageView()
-        setupRecipeButton()
+        setupDescriptionLabel()
     }
     
-    private func setupSrollView() {
-        
-        detailView = UIScrollView(frame: view.frame)
+    private func setupView() {
         view.addSubview(detailView)
-        detailView.backgroundColor = .white
+        detailView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
     }
-    
     
     private func setupImageView() {
-        
         detailView.addSubview(imageView)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
-
-        imageView.image = UIImage(named: dish?.image ?? "defaultPhoto")
-        
+        imageView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(safeArea)
+            make.width.height.equalTo(300)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        imageView.image = UIImage(named: dish?.image ?? "notFound")
     }
     
-    private func setupRecipeButton() {
-        
-        let navigationBar = navigationController?.navigationBar
-        
-        recipeButton = UIButton(frame: CGRect(x: 0, y: view.bounds.width + (navigationBar?.bounds.height ?? 50), width: view.bounds.width, height: 50))
-        recipeButton.addTarget(self, action: #selector(makeRecipeViewController), for: .touchUpInside)
-        
-        recipeButton.backgroundColor = .blue
-        recipeButton.setTitle("Got to RecipeVC", for: .normal)
-        
-        view.addSubview(recipeButton)
+    private func setupDescriptionLabel() {
+        detailView.addSubview(descriptionLabel)
+        descriptionLabel.snp.makeConstraints { (make) in
+            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(10)
+            make.height.lessThanOrEqualTo(safeArea.snp.height)
+            make.width.equalTo(safeArea.snp.width)
+            make.left.equalTo(safeArea.snp.left)
+            make.right.equalTo(safeArea.snp.right)
+        }
+        descriptionLabel.text = dish?.description
     }
     
     @objc private func makeRecipeViewController() {
-        detailView.backgroundColor = .white
-        
         let recipeVC = RecipeViewController()
         recipeVC.delegate = self
-
         recipeVC.modalPresentationStyle = .fullScreen
         recipeVC.modalTransitionStyle = .crossDissolve
         present(recipeVC, animated: true, completion: nil)

@@ -3,6 +3,11 @@
 
 Изучал: 
 
+Update:
+
+- Alamofire
+- SnapKit
+
 - Delegate
 - URLSession
 - Closure

@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import SnapKit
 
 // Задания:
 
-// Подключить alamofire
-// Сделать загрузку через него
-// DetailVC autolayouts
+// Подключить alamofire         - Solved
+// Сделать загрузку через него  - Solved
+// DetailVC autolayouts         - Solved
 
-// SnapKit install
-// DishesTableViewCell сделать при помощи snapKit
-// DetailVC при помощи snapKit
-// Нажимать на content table view cell (clips to bounds)
+// SnapKit install              - Solved
+// DishesTableViewCell сделать при помощи snapKit - Solved
+// DetailVC при помощи snapKit  - Solved
+// Нажимать на content table view cell (clips to bounds) - ...
 
 // Подключить coreData
 // Вести запись блюд, в первую очередь качать блюда из локального хранилища
@@ -30,9 +31,18 @@ class MainViewController: UIViewController{
     var manager: Manager?
     
     var safeArea: UILayoutGuide!
-    var tableView: UITableView!
     
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = 100
+        return tableView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        return activityIndicator
+    }()
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NotificationConstants.URLSessinHasError, object: nil)
@@ -42,45 +52,37 @@ class MainViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let addNewDishButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDish))
+        
+        title = "Main Screen"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.setRightBarButton(addNewDishButton, animated: true)
+        navigationItem.hidesBackButton = true
+        
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         
-        //Notification Center
+        // Notification Center
         NotificationCenter.default.addObserver(self, selector: #selector(errorAlert), name: NotificationConstants.URLSessinHasError, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NotificationConstants.dataLoaded, object: nil)
 
-        
         // AddSubviews
-        tableView = UITableView(frame: view.frame)
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
         
         // ActivityIndicator
-        activityIndicator.frame = view.bounds
-        activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        activityIndicator.snp.makeConstraints { (make) in
+            make.edges.equalTo(view.snp.edges)
+        }
+        
         makeServiceCall()
-        
-        
-        // Table view
-        tableView.dataSource = self
-        tableView.delegate = self
         setupTableView()
-        
-        
-        title = "Main Screen"
-        
-        let addNewDishButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDish))
-        navigationItem.setRightBarButton(addNewDishButton, animated: true)
-        
-        // FIXME: Left navigation button
-        navigationItem.hidesBackButton = true
     }
     
     // TODO: Функция для добавления нового блюда на главный экран
     @objc func addNewDish() {
             
     }
-    
     
     // TODO: func errorAlert(message: String)
     @objc func errorAlert() {
@@ -102,22 +104,23 @@ class MainViewController: UIViewController{
     //MARK: - Private Methods
     
     private func setupTableView() {
-    
-        tableView.rowHeight = 100
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.cellId)
+
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(safeArea)
+        }
     }
     
     private func makeServiceCall() {
-        
         activityIndicator.startAnimating()
         manager = Manager()
         manager?.loadData()
     }
-    
-
 }
 
-//MARK: Table View Data Source
+//MARK: Table View Data Source, Table View Delegate
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -135,10 +138,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.imageIV.image = UIImage(named: item.image)
+        cell.imageIV.image = UIImage(named: item.image) ?? UIImage(named: "notFound")
         cell.nameLabel.text = item.name
         cell.descriptionLabel.text = item.description
-        
         return cell
     }
     
@@ -150,7 +152,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 //MARK:  Delegate method

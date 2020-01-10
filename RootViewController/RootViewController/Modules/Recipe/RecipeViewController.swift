@@ -10,15 +10,34 @@ import UIKit
 
 class RecipeViewController: UIViewController {
 
-    var changeColorButton: UIButton!
-    var changeTitleButton: UIButton!
-    var closeButton: UIButton!
+    var safeArea: UILayoutGuide!
+    
+    var changeColorButton: UIButton = {
+        let changeColorButton = UIButton()
+        changeColorButton.backgroundColor = .red
+        changeColorButton.setTitle("Change Previous Background Color", for: .normal)
+        return changeColorButton
+    }()
+    
+    var changeTitleButton: UIButton = {
+        let changeTitleButton = UIButton()
+        changeTitleButton.backgroundColor = .blue
+        changeTitleButton.setTitle("Change Main Title", for: .normal)
+        return changeTitleButton
+    }()
+    
+    var closeButton: UIButton = {
+        let closeButton = UIButton(type: .close)
+        closeButton.backgroundColor = .red
+        return closeButton
+    }()
     
     weak var delegate: RecipeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        safeArea = view.layoutMarginsGuide
         view.backgroundColor = .white
         setupColorButton()
         setupTitleButton()
@@ -26,35 +45,34 @@ class RecipeViewController: UIViewController {
     }
     
     private func setupColorButton() {
-        changeColorButton = UIButton(frame: CGRect(x: 0, y: view.bounds.width , width: view.bounds.width, height: 50))
-        
-        changeColorButton.addTarget(self, action: #selector(changePreviousBackgroundColor), for: .touchUpInside)
-        
-        changeColorButton.backgroundColor = .red
-        changeColorButton.setTitle("Change Previous Background Color", for: .normal)
-        
         view.addSubview(changeColorButton)
+        changeColorButton.addTarget(self, action: #selector(changePreviousBackgroundColor), for: .touchUpInside)
+        changeColorButton.snp.makeConstraints { (make) in
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(50)
+            make.center.equalTo(view.snp.center)
+        }
     }
     
     private func setupTitleButton() {
-        changeTitleButton = UIButton(frame: CGRect(x: 0, y: view.bounds.width + 50, width: view.bounds.width, height: 50))
-        changeTitleButton.addTarget(self, action: #selector(changeMainTitle), for: .touchUpInside)
-        
-        changeTitleButton.backgroundColor = .blue
-        changeTitleButton.setTitle("Change Main Title", for: .normal)
-        
         view.addSubview(changeTitleButton)
+        changeTitleButton.addTarget(self, action: #selector(changeMainTitle), for: .touchUpInside)
+        changeTitleButton.snp.makeConstraints { (make) in
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(50)
+            make.top.equalTo(changeColorButton.snp.bottom)
+        }
     }
     
     private func setupClosebutton() {
-        closeButton = UIButton(type: .close)
-        closeButton.frame = CGRect(x: view.bounds.width - 50, y: 50, width: 50, height: 50)
-        
-        closeButton.backgroundColor = .red
-        
-        closeButton.addTarget(self, action: #selector(popToMain), for: .touchUpInside)
-        
         view.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(popToMain), for: .touchUpInside)
+        closeButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
+            make.right.equalTo(0)
+            make.top.equalTo(safeArea)
+        }
+        
     }
     
     @objc func changePreviousBackgroundColor() {

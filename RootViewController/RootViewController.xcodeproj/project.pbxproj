@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8422246923B278E6000D9AB9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422246823B278E6000D9AB9 /* DetailViewController.swift */; };
+		842E0B8C23C748DE00B4DDA1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E0B8B23C748DE00B4DDA1 /* SnapKit.framework */; };
+		842E0B8D23C748DE00B4DDA1 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842E0B8B23C748DE00B4DDA1 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		842EA9BA23C71463001FF226 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842EA9B923C71463001FF226 /* Alamofire.framework */; };
+		842EA9BB23C71463001FF226 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842EA9B923C71463001FF226 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8447376923B358520093B9C4 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447376823B358520093B9C4 /* RecipeViewController.swift */; };
 		8447376B23B3587A0093B9C4 /* RecipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447376A23B3587A0093B9C4 /* RecipeDelegate.swift */; };
 		8447376D23B363CF0093B9C4 /* DetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447376C23B363CF0093B9C4 /* DetailDelegate.swift */; };
@@ -19,6 +23,7 @@
 		845B630E23B3849600DCE4F1 /* DishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B630D23B3849600DCE4F1 /* DishesModel.swift */; };
 		846F950123B26B91000CC1EA /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950023B26B91000CC1EA /* Manager.swift */; };
 		846F950323B2711B000CC1EA /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950223B2711B000CC1EA /* DishesTableViewCell.swift */; };
+		84970D1723C777C900263DAD /* DishList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84970D1523C777C800263DAD /* DishList.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				842EA9BB23C71463001FF226 /* Alamofire.framework in Embed Frameworks */,
+				842E0B8D23C748DE00B4DDA1 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		8422246823B278E6000D9AB9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		842E0B8B23C748DE00B4DDA1 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		842EA9B923C71463001FF226 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8447376823B358520093B9C4 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		8447376A23B3587A0093B9C4 /* RecipeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDelegate.swift; sourceTree = "<group>"; };
 		8447376C23B363CF0093B9C4 /* DetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		845B630D23B3849600DCE4F1 /* DishesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DishesModel.swift; path = RootViewController/Modules/Detail/DishesModel.swift; sourceTree = SOURCE_ROOT; };
 		846F950023B26B91000CC1EA /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		846F950223B2711B000CC1EA /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
+		84970D1623C777C900263DAD /* DishList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DishList.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +66,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842EA9BA23C71463001FF226 /* Alamofire.framework in Frameworks */,
+				842E0B8C23C748DE00B4DDA1 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842EA9B823C71463001FF226 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				842E0B8B23C748DE00B4DDA1 /* SnapKit.framework */,
+				842EA9B923C71463001FF226 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8447376723B3582F0093B9C4 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +104,8 @@
 		8447377023B377320093B9C4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				8422246823B278E6000D9AB9 /* DetailViewController.swift */,
 				84F4E53E23B3789400AC523E /* Delegates */,
+				8422246823B278E6000D9AB9 /* DetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -112,6 +133,7 @@
 			children = (
 				845569BE23B24108001BF324 /* RootViewController */,
 				845569BD23B24108001BF324 /* Products */,
+				842EA9B823C71463001FF226 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +154,7 @@
 				845569C823B24108001BF324 /* Assets.xcassets */,
 				845569CA23B24108001BF324 /* LaunchScreen.storyboard */,
 				845569CD23B24108001BF324 /* Info.plist */,
+				84970D1523C777C800263DAD /* DishList.xcdatamodeld */,
 			);
 			path = RootViewController;
 			sourceTree = "<group>";
@@ -182,6 +205,7 @@
 				845569B923B24108001BF324 /* Frameworks */,
 				845569BA23B24108001BF324 /* Resources */,
 				84288D5A23B4B4F5001D00A0 /* Embed Frameworks */,
+				842EA9BC23C7148B001FF226 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,6 +261,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		842EA9BC23C7148B001FF226 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncarthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		845569B823B24108001BF324 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -252,6 +298,7 @@
 				8447376D23B363CF0093B9C4 /* DetailDelegate.swift in Sources */,
 				8447376B23B3587A0093B9C4 /* RecipeDelegate.swift in Sources */,
 				8447376923B358520093B9C4 /* RecipeViewController.swift in Sources */,
+				84970D1723C777C900263DAD /* DishList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,11 +435,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RootViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rk.RootViewController;
 				PRODUCT_NAME = RootViewController;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -401,11 +457,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RootViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rk.RootViewController;
 				PRODUCT_NAME = RootViewController;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -431,6 +496,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84970D1523C777C800263DAD /* DishList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84970D1623C777C900263DAD /* DishList.xcdatamodel */,
+			);
+			currentVersion = 84970D1623C777C900263DAD /* DishList.xcdatamodel */;
+			path = DishList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 845569B423B24108001BF324 /* Project object */;
 }
