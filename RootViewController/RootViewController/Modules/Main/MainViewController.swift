@@ -23,6 +23,13 @@ import SnapKit
 // Подключить coreData
 // Вести запись блюд, в первую очередь качать блюда из локального хранилища
 
+/*
+ NSEntityDescription
+ NSPersistentStoreCoordinator
+ NSManagedObjectContext
+ 
+ */
+
 
 class MainViewController: UIViewController{
 
@@ -31,18 +38,9 @@ class MainViewController: UIViewController{
     var manager: Manager?
     
     var safeArea: UILayoutGuide!
+    var tableView = UITableView()
     
-    var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.rowHeight = 100
-        return tableView
-    }()
-    
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        return activityIndicator
-    }()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NotificationConstants.URLSessinHasError, object: nil)
@@ -55,7 +53,7 @@ class MainViewController: UIViewController{
         let addNewDishButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDish))
         
         title = "Main Screen"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.setRightBarButton(addNewDishButton, animated: true)
         navigationItem.hidesBackButton = true
         
@@ -71,8 +69,9 @@ class MainViewController: UIViewController{
         view.addSubview(activityIndicator)
         
         // ActivityIndicator
+        activityIndicator.backgroundColor = .clear
         activityIndicator.snp.makeConstraints { (make) in
-            make.edges.equalTo(view.snp.edges)
+            make.center.equalToSuperview()
         }
         
         makeServiceCall()
@@ -91,7 +90,7 @@ class MainViewController: UIViewController{
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         activityIndicator.stopAnimating()
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
         
         return
     }
@@ -104,11 +103,12 @@ class MainViewController: UIViewController{
     //MARK: - Private Methods
     
     private func setupTableView() {
+        tableView.rowHeight = 100
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(DishesTableViewCell.self, forCellReuseIdentifier: DishesTableViewCell.cellId)
 
-        tableView.snp.makeConstraints { (make) in
+        tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
         }
     }

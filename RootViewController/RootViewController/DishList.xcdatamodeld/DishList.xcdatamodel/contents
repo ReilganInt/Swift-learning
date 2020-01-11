@@ -5,7 +5,9 @@
         <attribute name="dishesImage" optional="YES" attributeType="String"/>
         <attribute name="dishesName" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="DishesList" positionX="-874.984375" positionY="-3024.74609375" width="263.2578125" height="88"/>
+        <element name="Entity" positionX="-810" positionY="-3006" width="128" height="43"/>
     </elements>
 </model>

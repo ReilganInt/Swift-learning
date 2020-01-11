@@ -16,25 +16,10 @@ class DishesTableViewCell: UITableViewCell {
     static let cellId = "cellId"
     
     var safeArea: UILayoutGuide!
-    
-    let imageIV: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleToFill
-        iv.layer.cornerRadius = 20
-        iv.layer.masksToBounds = true
-        return iv
-    }()
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    let descriptionLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
+    let imageIV = UIImageView()
+    let nameLabel = UILabel()
+    let descriptionLabel = UILabel()
+
     //MARK: Initializations
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -58,7 +43,10 @@ class DishesTableViewCell: UITableViewCell {
     
     func setupImageView() {
         addSubview(imageIV)
-        imageIV.snp.makeConstraints { (make) -> Void in
+        imageIV.contentMode = .scaleToFill
+        imageIV.layer.cornerRadius = 20
+        imageIV.layer.masksToBounds = true
+        imageIV.snp.makeConstraints { make in
             make.left.top.equalTo(0)
             make.width.height.equalTo(90)
         }
@@ -66,7 +54,7 @@ class DishesTableViewCell: UITableViewCell {
     
     func setupNameLabel() {
         addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) -> Void in
+        nameLabel.snp.makeConstraints { make in
             make.top.equalTo(5)
             make.left.equalTo(imageIV.snp.right).offset(5)
             make.right.equalTo(-5)
@@ -75,7 +63,7 @@ class DishesTableViewCell: UITableViewCell {
     
     func setupDescriptionLabel() {
         addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { (make) -> Void in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(5)
             make.left.equalTo(nameLabel)
             make.right.equalTo(-5)

@@ -13,7 +13,6 @@
 		84ADCAC423A14DA5003ABD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ADCAC223A14DA5003ABD5B /* Main.storyboard */; };
 		84ADCAC623A14DA6003ABD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ADCAC523A14DA6003ABD5B /* Assets.xcassets */; };
 		84ADCAC923A14DA6003ABD5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ADCAC723A14DA6003ABD5B /* LaunchScreen.storyboard */; };
-		84ADCAD123A14DB9003ABD5B /* HVD_Comic_Serif_Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84ADCAD023A14DB9003ABD5B /* HVD_Comic_Serif_Pro.otf */; };
 		84ADCAD323A15523003ABD5B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADCAD223A15523003ABD5B /* String.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +25,6 @@
 		84ADCAC523A14DA6003ABD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84ADCAC823A14DA6003ABD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84ADCACA23A14DA6003ABD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84ADCAD023A14DB9003ABD5B /* HVD_Comic_Serif_Pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HVD_Comic_Serif_Pro.otf; path = "../../../../Downloads/HVD-Comic-Serif-Pro/HVD_Comic_Serif_Pro.otf"; sourceTree = "<group>"; };
 		84ADCAD223A15523003ABD5B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +65,6 @@
 				84ADCAC523A14DA6003ABD5B /* Assets.xcassets */,
 				84ADCAC723A14DA6003ABD5B /* LaunchScreen.storyboard */,
 				84ADCACA23A14DA6003ABD5B /* Info.plist */,
-				84ADCAD023A14DB9003ABD5B /* HVD_Comic_Serif_Pro.otf */,
 				84ADCAD223A15523003ABD5B /* String.swift */,
 			);
 			path = simpleApp;
@@ -133,7 +130,6 @@
 			files = (
 				84ADCAC923A14DA6003ABD5B /* LaunchScreen.storyboard in Resources */,
 				84ADCAC623A14DA6003ABD5B /* Assets.xcassets in Resources */,
-				84ADCAD123A14DB9003ABD5B /* HVD_Comic_Serif_Pro.otf in Resources */,
 				84ADCAC423A14DA5003ABD5B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +289,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z76F7M3L8T;
 				INFOPLIST_FILE = simpleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z76F7M3L8T;
 				INFOPLIST_FILE = simpleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

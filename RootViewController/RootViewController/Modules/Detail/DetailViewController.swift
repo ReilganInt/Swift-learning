@@ -14,26 +14,9 @@ class DetailViewController: UIViewController {
     //MARK:  Properties
     
     var dish: Dish?
-    
-    var detailView: UIView = {
-        let detailView = UIView()
-        detailView.backgroundColor = .white
-        return detailView
-    }()
-    
-    var imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleToFill
-        iv.layer.cornerRadius = 20
-        iv.layer.masksToBounds = true
-        return iv
-    }()
-    
-    var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        return label
-    }()
+    var detailView = UIView()
+    var imageView = UIImageView()
+    var descriptionLabel = UILabel()
     
     var safeArea: UILayoutGuide!
     
@@ -50,6 +33,7 @@ class DetailViewController: UIViewController {
     //MARK: - Setup Methods
     
     private func setupDetailView() {
+        detailView.backgroundColor = .white
         setupView()
         setupImageView()
         setupDescriptionLabel()
@@ -64,6 +48,9 @@ class DetailViewController: UIViewController {
     
     private func setupImageView() {
         detailView.addSubview(imageView)
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 20
+        imageView.layer.masksToBounds = true
         imageView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(safeArea)
             make.width.height.equalTo(300)
@@ -74,6 +61,7 @@ class DetailViewController: UIViewController {
     
     private func setupDescriptionLabel() {
         detailView.addSubview(descriptionLabel)
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.snp.makeConstraints { (make) in
             make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(10)
             make.height.lessThanOrEqualTo(safeArea.snp.height)
