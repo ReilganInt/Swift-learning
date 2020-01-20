@@ -33,8 +33,7 @@ class MainManager: MainManagerProtocol {
     // MARK: - Public methods
     
     func download(isLoaded: @escaping (Result<[Dish], Error>) -> ()) {
-        // Почему Не заходит в комплишон свитч
-        networkManager.request(completion: { [weak self] result in
+            networkManager.request(completion: { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.coreDataManager.fetch()
@@ -47,7 +46,8 @@ class MainManager: MainManagerProtocol {
     }
     
     func getCount() -> Int {
-        return coreDataManager.getCount()
+        let count =  coreDataManager.getCount()
+        return count
     }
     
     func getItem(at index: Int) -> Dish {

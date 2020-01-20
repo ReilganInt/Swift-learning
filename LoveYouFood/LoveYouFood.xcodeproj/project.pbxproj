@@ -18,7 +18,6 @@
 		84965C2423D5C6AA00521D42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965C2323D5C6AA00521D42 /* SceneDelegate.swift */; };
 		84965C2623D5C6AA00521D42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965C2523D5C6AA00521D42 /* MainViewController.swift */; };
 		84965C2E23D5C6AB00521D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84965C2D23D5C6AB00521D42 /* Assets.xcassets */; };
-		84965C3123D5C6AB00521D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84965C2F23D5C6AB00521D42 /* LaunchScreen.storyboard */; };
 		84965C3F23D5C7A900521D42 /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965C3E23D5C7A900521D42 /* MainManager.swift */; };
 		84965C4823D5D2E200521D42 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965C4723D5D2E200521D42 /* DishModel.swift */; };
 		84965C4A23D5D37B00521D42 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84965C4923D5D37B00521D42 /* Router.swift */; };
@@ -315,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84965C6A23D5E00800521D42 /* LoveYouFood.xcdatamodeld in Resources */,
-				84965C3123D5C6AB00521D42 /* LaunchScreen.storyboard in Resources */,
 				84965C2E23D5C6AB00521D42 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

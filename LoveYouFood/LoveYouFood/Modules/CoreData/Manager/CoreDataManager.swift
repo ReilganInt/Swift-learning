@@ -27,7 +27,7 @@ class CoreDataManager: DataBaseProtocol {
         return managedContext
     }
     
-    private var dishManagedObjects: [Dish]? {
+    private var dishManagedObjects: [Dish]? = [] {
         didSet {
             saveContext()
         }
