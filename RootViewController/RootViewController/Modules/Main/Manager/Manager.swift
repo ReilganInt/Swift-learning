@@ -25,45 +25,45 @@ enum ManagerNotificationType: String {
 }
 
 class Manager {
-    
+
     //MARK: Prorepties
-       
+
     private var dishes: [Dish]? {
         didSet {
             postNotification(type: .loaded)
         }
     }
-    
+
     //MARK: Public Methods
-    
+
     func getDishesCounr() -> Int {
         return dishes?.count ?? 0
     }
-    
+
     func getRecipeCoun(for index: Int) -> Int {
         return dishes?[index].recipe.count ?? 0
     }
-    
+
     func getItem(for index: Int) -> Dish? {
-        
+
         let count = getDishesCounr()
-        
+
         if count >= index {
             return dishes?[index]
         } else {
             return nil
         }
     }
-    
+
     func loadData() {
-        
+
         guard let url = URL(string: ManagerConstants.loadURlString) else { return }
-        
+
         AF.request(url)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseData { response in
-                
+
             switch response.result {
                 case .success(let value):
                     var model = try? JSONDecoder().decode(DishesModel.self, from: value)
@@ -73,10 +73,10 @@ class Manager {
                     self.postNotification(type: .error)
             }
         }
-        
+
     }
-    
-    
+
+
     //MARK: Private Methods
     private func postNotification(type: ManagerNotificationType) {
         DispatchQueue.main.async {
@@ -84,5 +84,5 @@ class Manager {
             NotificationCenter.default.post(name: notificationName, object: nil)
         }
     }
-    
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G2022" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DishManagedObject" representedClassName=".DishManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
+        <relationship name="ingridients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngridientManagedObject" inverseName="dish" inverseEntity="IngridientManagedObject"/>
+    </entity>
+    <entity name="IngridientManagedObject" representedClassName=".IngridientManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="dish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DishManagedObject" inverseName="ingridients" inverseEntity="DishManagedObject"/>
+    </entity>
+    <elements>
+        <element name="DishManagedObject" positionX="-344.609375" positionY="-108.87109375" width="128" height="118"/>
+        <element name="IngridientManagedObject" positionX="-135.4765625" positionY="-105.97265625" width="128" height="88"/>
+    </elements>
+</model>

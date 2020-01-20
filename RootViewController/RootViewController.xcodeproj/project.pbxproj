@@ -23,7 +23,6 @@
 		845B630E23B3849600DCE4F1 /* DishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B630D23B3849600DCE4F1 /* DishesModel.swift */; };
 		846F950123B26B91000CC1EA /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950023B26B91000CC1EA /* Manager.swift */; };
 		846F950323B2711B000CC1EA /* DishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F950223B2711B000CC1EA /* DishesTableViewCell.swift */; };
-		84970D1723C777C900263DAD /* DishList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84970D1523C777C800263DAD /* DishList.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,7 +57,6 @@
 		845B630D23B3849600DCE4F1 /* DishesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DishesModel.swift; path = RootViewController/Modules/Detail/DishesModel.swift; sourceTree = SOURCE_ROOT; };
 		846F950023B26B91000CC1EA /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		846F950223B2711B000CC1EA /* DishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesTableViewCell.swift; sourceTree = "<group>"; };
-		84970D1623C777C900263DAD /* DishList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DishList.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +126,13 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		844EAEF323CDF741003BF423 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		845569B323B24108001BF324 = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +159,6 @@
 				845569C823B24108001BF324 /* Assets.xcassets */,
 				845569CA23B24108001BF324 /* LaunchScreen.storyboard */,
 				845569CD23B24108001BF324 /* Info.plist */,
-				84970D1523C777C800263DAD /* DishList.xcdatamodeld */,
 			);
 			path = RootViewController;
 			sourceTree = "<group>";
@@ -180,6 +184,7 @@
 		84F4E53A23B377C800AC523E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				844EAEF323CDF741003BF423 /* Model */,
 				8447377223B377560093B9C4 /* Models */,
 				846F950023B26B91000CC1EA /* Manager.swift */,
 			);
@@ -298,7 +303,6 @@
 				8447376D23B363CF0093B9C4 /* DetailDelegate.swift in Sources */,
 				8447376B23B3587A0093B9C4 /* RecipeDelegate.swift in Sources */,
 				8447376923B358520093B9C4 /* RecipeViewController.swift in Sources */,
-				84970D1723C777C900263DAD /* DishList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,19 +502,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		84970D1523C777C800263DAD /* DishList.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				84970D1623C777C900263DAD /* DishList.xcdatamodel */,
-			);
-			currentVersion = 84970D1623C777C900263DAD /* DishList.xcdatamodel */;
-			path = DishList.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 845569B423B24108001BF324 /* Project object */;
 }

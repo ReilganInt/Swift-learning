@@ -42,10 +42,10 @@ class MainViewController: UIViewController{
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: NotificationConstants.URLSessinHasError, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NotificationConstants.dataLoaded, object: nil)
-    }
+//    deinit {
+//        NotificationCenter.default.removeObserver(self, name: NotificationConstants.URLSessinHasError, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: NotificationConstants.dataLoaded, object: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

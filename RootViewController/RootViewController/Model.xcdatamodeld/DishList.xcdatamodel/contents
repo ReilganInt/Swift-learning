@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G2022" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Dish" representedClassName="Dish" syncable="YES" codeGenerationType="category">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="dish" inverseEntity="Recipe"/>
+    </entity>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="dish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dish" inverseName="recipe" inverseEntity="Dish"/>
+    </entity>
+    <elements>
+        <element name="Dish" positionX="85.75" positionY="-825.9609375" width="128" height="103"/>
+        <element name="Recipe" positionX="305.33984375" positionY="-749.21875" width="128" height="88"/>
+    </elements>
+</model>
