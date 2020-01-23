@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol MainManagerProtocol {
-    func download(isLoaded: @escaping (Result<[Dish], Error>) -> ())
+    func download(isLoaded: @escaping (Result<Void, Error>) -> ())
     func getCount() -> Int
     func getItem(at index: Int) -> Dish
     func remove(at index: Int)
@@ -19,10 +19,11 @@ protocol MainManagerProtocol {
 class MainManager: MainManagerProtocol {
     
     // MARK: - Propreties
+    var actualItems: [DishModelProtocol] = []
     
-    private var networkManager: NetworkManager
-    private var coreDataManager: CoreDataManager
-        
+    private var networkManager: NetworkManagerProtocol!
+    private var coreDataManager: DataBaseProtocol!
+    
     // MARK: - Initialization
     
     init() {
@@ -32,21 +33,25 @@ class MainManager: MainManagerProtocol {
     
     // MARK: - Public methods
     
-    func download(isLoaded: @escaping (Result<[Dish], Error>) -> ()) {
-            networkManager.request(completion: { [weak self] result in
+    func download(isLoaded: @escaping (Result<Void, Error>) -> ()) {
+        networkManager?.request(completion: { [weak self] result in
             switch result {
             case .failure(let error):
+                // переход на fetch в другом потоке
+                // почитать про потокобезопасность core data & сделать правильно (fetch/save)
                 self?.coreDataManager.fetch()
                 isLoaded(.failure(error))
             case .success(let data):
+                // переход на сохранение в другом потоке
+                // почитать про потокобезопасность core data & сделать правильно (fetch/save)
                 self?.coreDataManager.save(forData: data)
-                isLoaded(.success([]))
+                isLoaded(.success(Void()))
             }
         })
     }
     
     func getCount() -> Int {
-        let count =  coreDataManager.getCount()
+        let count = coreDataManager.getCount()
         return count
     }
     

@@ -144,9 +144,7 @@
 		84965C3923D5C77100521D42 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				8482EEAF23D613740092D264 /* Colors */,
-				84965C4123D5D2A400521D42 /* Networking */,
-				84965C4023D5D29E00521D42 /* CoreData */,
+				84E2B57A23D72B9E008225C8 /* Common */,
 				84965C3A23D5C77C00521D42 /* Main */,
 			);
 			path = Modules;
@@ -155,19 +153,10 @@
 		84965C3A23D5C77C00521D42 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				8482EEAC23D610620092D264 /* Cell */,
+				84E2B57723D72B48008225C8 /* View */,
 				84965C3C23D5C79400521D42 /* Manager */,
-				84965C3B23D5C78800521D42 /* Controller */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		84965C3B23D5C78800521D42 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				84965C2523D5C6AA00521D42 /* MainViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		84965C3C23D5C79400521D42 /* Manager */ = {
@@ -251,6 +240,33 @@
 				84965C4D23D5D3A200521D42 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84E2B57723D72B48008225C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84965C2523D5C6AA00521D42 /* MainViewController.swift */,
+				8482EEAC23D610620092D264 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84E2B57823D72B76008225C8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84965C4023D5D29E00521D42 /* CoreData */,
+				84965C4123D5D2A400521D42 /* Networking */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		84E2B57A23D72B9E008225C8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8482EEAF23D613740092D264 /* Colors */,
+				84E2B57823D72B76008225C8 /* Managers */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
