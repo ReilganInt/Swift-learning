@@ -7,15 +7,48 @@
 //
 
 import Foundation
+import UIKit
 
 class MainRouter: MainRouterProtocol {
-
-    func presentPostsScreen(from view: MainViewProtocol, forPosts posts: [PostModel]) {
-        let detailViewController = DetailViewController()
-        detailViewController.configure(with: self)
-        if let sourceView = view as? MainViewController {
+    
+    // MARK: - MainRouterProtocol mathods
+    
+    func showPosts(from view: MainViewProtocol, with posts: [PostModel]) {
+        let detailViewController = DetailConfigurator.createDetailModule()
+        
+        if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//class MainRouter: MainRouterProtocol {
+//
+//    func presentPostsScreen(from view: MainViewProtocol, forPosts posts: [PostModel]) {
+////        let detailViewController = DetailViewController()
+////        detailViewController.configure(with: self)
+////        if let sourceView = view as? MainViewController {
+////            sourceView.navigationController?.pushViewController(detailViewController, animated: true)
+////        }
+//    }
+//
+//}

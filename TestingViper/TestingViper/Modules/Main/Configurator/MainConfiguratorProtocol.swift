@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
-protocol MainConfiguratorProtocol {
-    func configure(with viewController: MainViewController)
+protocol MainConfiguratorProtocol: class {
+    
+    // Presenter -> Configurator
+    static func createMainModule() -> UIViewController
 }

@@ -1,17 +1,17 @@
 //
-//  MainConfigurator.swift
+//  DetailConfigurator.swift
 //  TestingViper
 //
-//  Created by admin on 27.01.2020.
+//  Created by admin on 28.01.2020.
 //  Copyright © 2020 Rinat Kutuev. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class MainConfigurator: MainConfiguratorProtocol {
+class DetailConfigurator: DetailConfiguratorProtocol {
     
-    static func createMainModule() -> UIViewController {
+    static func createDetailModule() -> UIViewController {
         let viewController = MainViewController()
         
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()

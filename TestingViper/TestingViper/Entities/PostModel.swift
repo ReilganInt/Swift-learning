@@ -24,20 +24,24 @@ struct PostsModel: PostsModelProtocol, Decodable {
 struct PostModel: PostModelProtocol, Decodable {
     var title = ""
     var imageURLString = ""
+    var text = ""
     
     enum DishCodingKeys: String, CodingKey {
         case title
         case imageURLString
+        case text
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DishCodingKeys.self)
         self.title = try container.decode(String.self, forKey: .title)
         self.imageURLString = try container.decode(String.self, forKey: .imageURLString)
+        self.text = try container.decode(String.self, forKey: .text)
     }
     
-    init(title: String, imageURLString: String) {
+    init(title: String, imageURLString: String, text: String) {
         self.title = title
         self.imageURLString = imageURLString
+        self.text = text
     }
 }

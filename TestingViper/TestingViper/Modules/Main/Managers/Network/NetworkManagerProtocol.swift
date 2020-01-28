@@ -9,12 +9,16 @@
 import Foundation
 
 protocol NetworkManagerInputProtocol: class {
-    // INTERACTOR -> NetworkManagerInputProtocol
-    func retrievePostList()
+    
+    var networkRequestHandler: NetworkManagerOutputProtocol? { get set }
+    
+    // Interactor -> NetworkManager
+    func retrievePostList(for type: Endpoints.Posts)
 }
 
 protocol NetworkManagerOutputProtocol: class {
-    // NetworkManagerOutputProtocol -> INTERACTOR
+    
+    // NetworkManager -> Interactor
     func onPostsRetrieved(_ posts: [PostModel])
-    func onError()
+    func onError(with text: String)
 }

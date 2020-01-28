@@ -10,15 +10,16 @@ import Foundation
 
 protocol MainInteractorInputProtocol: class {
     var presenter: MainInteractorOutputProtocol? { get set }
-//    var dataBaseManager: DataBaseManagerInputProtocol? { get set }
+    var dataBaseManager: DataBaseManagerInputProtocol? { get set }
     var networkManager: NetworkManagerInputProtocol? { get set }
     
-    // PRESENTER -> INTERACTOR
-    func retrievePostList()
+    // Presenter -> Interactor
+    func retrievePostList(for type: Endpoints.Posts)
 }
 
 protocol MainInteractorOutputProtocol: class {
-    // INTERACTOR -> PRESENTER
+    
+    // Interactor -> Presenter
     func didRetrievePosts(_ posts: [PostModel])
-    func onError()
+    func onError(with text: String)
 }

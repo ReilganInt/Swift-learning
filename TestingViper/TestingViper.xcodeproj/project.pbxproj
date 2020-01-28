@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		844AF06A23E028E000113245 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF06923E028E000113245 /* MainInteractor.swift */; };
 		844AF06C23E029E300113245 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF06B23E029E300113245 /* MainRouter.swift */; };
+		844AF07523E05D8000113245 /* EndPointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF07423E05D8000113245 /* EndPointProtocol.swift */; };
+		844AF07723E05DA900113245 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF07623E05DA900113245 /* EndPoint.swift */; };
+		844AF07A23E05E2900113245 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF07923E05E2900113245 /* PersistenceError.swift */; };
+		844AF08023E05EE800113245 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF07E23E05EE800113245 /* Post+CoreDataClass.swift */; };
+		844AF08123E05EE800113245 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844AF07F23E05EE800113245 /* Post+CoreDataProperties.swift */; };
+		844AF08223E05F1100113245 /* Post.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 844AF07B23E05EA600113245 /* Post.xcdatamodeld */; };
 		84C2ED4823DF3AB800E23F23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED4723DF3AB800E23F23 /* AppDelegate.swift */; };
 		84C2ED4A23DF3AB800E23F23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED4923DF3AB800E23F23 /* SceneDelegate.swift */; };
 		84C2ED5123DF3AB800E23F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C2ED5023DF3AB800E23F23 /* Assets.xcassets */; };
@@ -28,6 +34,12 @@
 		84C2ED8523DF42F400E23F23 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED8423DF42F400E23F23 /* PostModel.swift */; };
 		84C2ED8723DF430E00E23F23 /* PostModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED8623DF430E00E23F23 /* PostModelProtocol.swift */; };
 		84C2ED8923DF435E00E23F23 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2ED8823DF435E00E23F23 /* MainPresenter.swift */; };
+		84D78DFD23E0811D006736FC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78DFC23E0811D006736FC /* NetworkManager.swift */; };
+		84D78DFF23E089A6006736FC /* DetailConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78DFE23E089A6006736FC /* DetailConfiguratorProtocol.swift */; };
+		84D78E0123E089DC006736FC /* DetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78E0023E089DC006736FC /* DetailConfigurator.swift */; };
+		84D78E0323E08A7C006736FC /* DataBaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78E0223E08A7C006736FC /* DataBaseManagerProtocol.swift */; };
+		84D78E0523E08A8E006736FC /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78E0423E08A8E006736FC /* DataBaseManager.swift */; };
+		84D78E0723E08B04006736FC /* DataBaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D78E0623E08B04006736FC /* DataBaseStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +60,12 @@
 /* Begin PBXFileReference section */
 		844AF06923E028E000113245 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		844AF06B23E029E300113245 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		844AF07423E05D8000113245 /* EndPointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProtocol.swift; sourceTree = "<group>"; };
+		844AF07623E05DA900113245 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		844AF07923E05E2900113245 /* PersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
+		844AF07C23E05EA600113245 /* Post.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Post.xcdatamodel; sourceTree = "<group>"; };
+		844AF07E23E05EE800113245 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		844AF07F23E05EE800113245 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		84C2ED4423DF3AB800E23F23 /* TestingViper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestingViper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C2ED4723DF3AB800E23F23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C2ED4923DF3AB800E23F23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +85,12 @@
 		84C2ED8423DF42F400E23F23 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		84C2ED8623DF430E00E23F23 /* PostModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModelProtocol.swift; sourceTree = "<group>"; };
 		84C2ED8823DF435E00E23F23 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		84D78DFC23E0811D006736FC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		84D78DFE23E089A6006736FC /* DetailConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfiguratorProtocol.swift; sourceTree = "<group>"; };
+		84D78E0023E089DC006736FC /* DetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfigurator.swift; sourceTree = "<group>"; };
+		84D78E0223E08A7C006736FC /* DataBaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManagerProtocol.swift; sourceTree = "<group>"; };
+		84D78E0423E08A8E006736FC /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		84D78E0623E08B04006736FC /* DataBaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +109,66 @@
 		844AF06D23E02EA500113245 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				844AF07323E032D700113245 /* Managers */,
+				844AF07223E032D000113245 /* ViewController */,
+				844AF07123E032C900113245 /* Presenter */,
+				844AF07023E032C300113245 /* Interactor */,
+				844AF06F23E032BC00113245 /* Configurator */,
+				844AF06E23E032B100113245 /* Router */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		844AF06E23E032B100113245 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		844AF06F23E032BC00113245 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				84D78DFE23E089A6006736FC /* DetailConfiguratorProtocol.swift */,
+				84D78E0023E089DC006736FC /* DetailConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		844AF07023E032C300113245 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		844AF07123E032C900113245 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		844AF07223E032D000113245 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		844AF07323E032D700113245 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		844AF07823E05E1A00113245 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				844AF07923E05E2900113245 /* PersistenceError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		84C2ED3B23DF3AB800E23F23 = {
@@ -110,11 +192,13 @@
 			isa = PBXGroup;
 			children = (
 				84C2ED8123DF42C900E23F23 /* Common */,
+				84C2ED8223DF42CF00E23F23 /* Entities */,
 				84C2ED5C23DF3B1A00E23F23 /* Modules */,
 				84C2ED5B23DF3ACF00E23F23 /* Supporting Files */,
 				84C2ED5023DF3AB800E23F23 /* Assets.xcassets */,
 				84C2ED5223DF3AB800E23F23 /* LaunchScreen.storyboard */,
 				84C2ED5523DF3AB800E23F23 /* Info.plist */,
+				844AF07B23E05EA600113245 /* Post.xcdatamodeld */,
 			);
 			path = TestingViper;
 			sourceTree = "<group>";
@@ -131,8 +215,8 @@
 		84C2ED5C23DF3B1A00E23F23 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				844AF06D23E02EA500113245 /* Detail */,
 				84C2ED5D23DF3B2500E23F23 /* Main */,
+				844AF06D23E02EA500113245 /* Detail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -207,6 +291,9 @@
 		84C2ED6423DF3B5B00E23F23 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				84D78E0223E08A7C006736FC /* DataBaseManagerProtocol.swift */,
+				84D78E0423E08A8E006736FC /* DataBaseManager.swift */,
+				84D78E0623E08B04006736FC /* DataBaseStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -215,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				84C2ED7F23DF41B900E23F23 /* NetworkManagerProtocol.swift */,
+				84D78DFC23E0811D006736FC /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -231,8 +319,8 @@
 		84C2ED8123DF42C900E23F23 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				844AF07823E05E1A00113245 /* Errors */,
 				84C2ED8323DF42E300E23F23 /* EndPoint */,
-				84C2ED8223DF42CF00E23F23 /* Entities */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -240,6 +328,8 @@
 		84C2ED8223DF42CF00E23F23 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				844AF07E23E05EE800113245 /* Post+CoreDataClass.swift */,
+				844AF07F23E05EE800113245 /* Post+CoreDataProperties.swift */,
 				84C2ED8423DF42F400E23F23 /* PostModel.swift */,
 				84C2ED8623DF430E00E23F23 /* PostModelProtocol.swift */,
 			);
@@ -249,6 +339,8 @@
 		84C2ED8323DF42E300E23F23 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
+				844AF07423E05D8000113245 /* EndPointProtocol.swift */,
+				844AF07623E05DA900113245 /* EndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -313,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844AF08223E05F1100113245 /* Post.xcdatamodeld in Resources */,
 				84C2ED5423DF3AB800E23F23 /* LaunchScreen.storyboard in Resources */,
 				84C2ED5123DF3AB800E23F23 /* Assets.xcassets in Resources */,
 			);
@@ -351,17 +444,28 @@
 				84C2ED8023DF41B900E23F23 /* NetworkManagerProtocol.swift in Sources */,
 				84C2ED4823DF3AB800E23F23 /* AppDelegate.swift in Sources */,
 				84C2ED4A23DF3AB800E23F23 /* SceneDelegate.swift in Sources */,
+				84D78DFD23E0811D006736FC /* NetworkManager.swift in Sources */,
 				84C2ED7023DF3F0C00E23F23 /* MainRouterProtocol.swift in Sources */,
+				844AF07523E05D8000113245 /* EndPointProtocol.swift in Sources */,
+				844AF07723E05DA900113245 /* EndPoint.swift in Sources */,
 				84C2ED7223DF3FB800E23F23 /* MainConfiguratorProtocol.swift in Sources */,
 				844AF06C23E029E300113245 /* MainRouter.swift in Sources */,
 				844AF06A23E028E000113245 /* MainInteractor.swift in Sources */,
+				84D78E0123E089DC006736FC /* DetailConfigurator.swift in Sources */,
+				84D78DFF23E089A6006736FC /* DetailConfiguratorProtocol.swift in Sources */,
 				84C2ED6C23DF3D8D00E23F23 /* MainPresenterProtocol.swift in Sources */,
+				844AF07A23E05E2900113245 /* PersistenceError.swift in Sources */,
+				84D78E0723E08B04006736FC /* DataBaseStore.swift in Sources */,
+				844AF08123E05EE800113245 /* Post+CoreDataProperties.swift in Sources */,
 				84C2ED8923DF435E00E23F23 /* MainPresenter.swift in Sources */,
+				84D78E0323E08A7C006736FC /* DataBaseManagerProtocol.swift in Sources */,
 				84C2ED6E23DF3E3F00E23F23 /* MainInteractorProtocol.swift in Sources */,
 				84C2ED6823DF3BA300E23F23 /* MainViewController.swift in Sources */,
+				84D78E0523E08A8E006736FC /* DataBaseManager.swift in Sources */,
 				84C2ED6A23DF3C5800E23F23 /* MainViewProtocol.swift in Sources */,
 				84C2ED7D23DF404E00E23F23 /* MainConfigurator.swift in Sources */,
 				84C2ED8523DF42F400E23F23 /* PostModel.swift in Sources */,
+				844AF08023E05EE800113245 /* Post+CoreDataClass.swift in Sources */,
 				84C2ED8723DF430E00E23F23 /* PostModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +664,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		844AF07B23E05EA600113245 /* Post.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				844AF07C23E05EA600113245 /* Post.xcdatamodel */,
+			);
+			currentVersion = 844AF07C23E05EA600113245 /* Post.xcdatamodel */;
+			path = Post.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84C2ED3C23DF3AB800E23F23 /* Project object */;
 }

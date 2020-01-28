@@ -9,6 +9,32 @@
 import Foundation
 
 protocol MainRouterProtocol: class {
-    // PRESENTER -> Router
-    func presentPostsScreen(from view: MainViewProtocol, forPosts posts: [PostModel])
+    
+    // Presenter -> Router
+    func showPosts(from view: MainViewProtocol, with posts: [PostModel])
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//protocol MainRouterProtocol: class {
+//
+//    // PRESENTER -> Router
+//    func presentPostsScreen(from view: MainViewProtocol, forPosts posts: [PostModel])
+//
+//}

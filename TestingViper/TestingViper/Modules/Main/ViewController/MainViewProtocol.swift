@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MainViewProtocol: class {
+    
     var presenter: MainPresenterProtocol? { get set }
     
-    // PRESENTER -> VIEW
-    func showError()
+    func configureView()
+    
+    // Presenter -> ViewController
+    
     func showLoading()
     func hideLoading()
+    func showAlertView(with text: String)
+    
 }
