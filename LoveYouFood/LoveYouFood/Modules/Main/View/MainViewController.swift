@@ -31,6 +31,7 @@ class MainViewController: UIViewController {
     }
     
     private func update() {
+        
         manager.download(isLoaded: { [weak self] result in
             guard let strongSelf = self else { return }
              switch result {
@@ -39,8 +40,11 @@ class MainViewController: UIViewController {
              case .success(_):
                  print("GREAT")
              }
-             strongSelf.tableView.reloadData()
-             strongSelf.activityIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+                strongSelf.activityIndicator.stopAnimating()
+            }
+             
          })
     }
     
@@ -81,7 +85,9 @@ class MainViewController: UIViewController {
         tableView.reloadData()
         let alert = UIAlertController(title: "New Dish", message: "Add a new dish", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default)// { [weak self] action in
+        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+//            self.manager.ggwp()
+        }
         //guard let nameTextField = alert.textFields?.first, let nameToSave = nameTextField.text else { return }
         //guard let descriptionTextField = alert.textFields?.last, let descriptionToSave = descriptionTextField.text else { return }
         //self?.coreDataManager.save(name: nameToSave, description: descriptionToSave)

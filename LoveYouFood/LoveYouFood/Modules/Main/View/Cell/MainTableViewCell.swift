@@ -32,9 +32,9 @@ class MainTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(withData data: Dish) {
+    func configure(withData data: DishModelProtocol) {
         nameLabel.text = data.name
-        descriptionLabel.text = data.desc
+        descriptionLabel.text = data.description
         photoImageView.image = UIImage(named: data.image ?? "defaultImage")
     }
     

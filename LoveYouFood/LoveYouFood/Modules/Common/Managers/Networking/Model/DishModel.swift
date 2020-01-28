@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct DishesModel: DishesModelProtocol, Decodable {
     var dishes: [DishModel]?
@@ -23,6 +24,7 @@ struct DishesModel: DishesModelProtocol, Decodable {
 }
 
 struct DishModel: DishModelProtocol, Decodable {
+    
     let name: String?
     let description: String?
     let image: String?
@@ -42,6 +44,13 @@ struct DishModel: DishModelProtocol, Decodable {
         self.image = try container.decode(String.self, forKey: .image)
         self.recipe = try container.decode([RecipeModel].self, forKey: .recipe)
     }
+    
+    init(name: String?, description: String?, imageName: String?, ingredients: [RecipeModel]?) {
+        self.name = name
+        self.description = description
+        self.image = imageName
+        self.recipe = ingredients
+    }
 }
 
 struct RecipeModel: RecipeModelProtocol, Decodable {
@@ -57,5 +66,14 @@ struct RecipeModel: RecipeModelProtocol, Decodable {
         let container = try decoder.container(keyedBy: RecipeCodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
         self.weight = try container.decode(Double.self, forKey: .weight)
+    }
+}
+
+extension DishModel: Equatable {
+    static func == (lhs: DishModel, rhs: DishModel) -> Bool {
+        return
+            lhs.name == rhs.name &&
+            lhs.description == rhs.description &&
+            lhs.image == rhs.image
     }
 }

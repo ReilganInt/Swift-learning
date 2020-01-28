@@ -12,76 +12,164 @@ import CoreData
 
 protocol DataBaseProtocol: AnyObject {
     func fetch()
-    func save(forData data: [DishModelProtocol]?)
-    func saveContext()
-    func remove(at index: Int)
-    func getCount() -> Int
-    func getItem(at index: Int) -> Dish
+    func fillData(forData data: [DishModelProtocol])
+    func remove(by model: DishModel)
 }
 
-class CoreDataManager: DataBaseProtocol {
+final class CoreDataManager: DataBaseProtocol {
     
     // MARK: - Protoperties
     
-    private var context: NSManagedObjectContext? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        return managedContext
+    private let modelName: String
+    private var managedObjectModelArray: [Dish] = []
+    
+    // MARK: - Initialization
+    
+    init(modelName: String) {
+        self.modelName = modelName
+
+        // Setup Notification Handling
+        setupNotificationHandling()
     }
     
-    private var dishManagedObjects: [Dish]? = [] {
-        didSet {
-            saveContext()
+    private lazy var privateManagedObjectContext: NSManagedObjectContext = {
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+        return managedObjectContext
+    }()
+    
+    private lazy var managedObjectModel: NSManagedObjectModel = {
+        guard let modelURL = Bundle.main.url(forResource: self.modelName, withExtension: "momd") else {
+            fatalError("Unable to Find Data Model")
+        }
+
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Unable to Load Data Model")
+        }
+        
+        return managedObjectModel
+    }()
+    
+    private(set) lazy var managedObjectContext: NSManagedObjectContext = {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+
+        managedObjectContext.parent = self.privateManagedObjectContext
+
+        return managedObjectContext
+    }()
+    
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+
+        let fileManager = FileManager.default
+        let storeName = "\(self.modelName).sqlite"
+
+        let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+        let persistentStoreURL = documentsDirectoryURL.appendingPathComponent(storeName)
+
+        do {
+            let options = [ NSInferMappingModelAutomaticallyOption : true,
+                            NSMigratePersistentStoresAutomaticallyOption : true]
+
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                                              configurationName: nil,
+                                                              at: persistentStoreURL,
+                                                              options: options)
+        } catch {
+            fatalError("Unable to Load Persistent Store")
+        }
+        
+        return persistentStoreCoordinator
+    }()
+    
+    // MARK: - Helper Methods
+
+    private func setupNotificationHandling() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(CoreDataManager.saveChanges(_:)), name: UIApplication.willTerminateNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(CoreDataManager.saveChanges(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    // MARK: - Notification Handling
+
+    @objc func saveChanges(_ notification: NSNotification) {
+        managedObjectContext.perform {
+            do {
+                if self.managedObjectContext.hasChanges {
+                    try self.managedObjectContext.save()
+                }
+            } catch {
+                let saveError = error as NSError
+                print("Unable to Save Changes of Managed Object Context")
+                print("\(saveError), \(saveError.localizedDescription)")
+            }
+
+            self.privateManagedObjectContext.perform {
+                do {
+                    if self.privateManagedObjectContext.hasChanges {
+                        try self.privateManagedObjectContext.save()
+                    }
+                } catch {
+                    let saveError = error as NSError
+                    print("Unable to Save Changes of Private Managed Object Context")
+                    print("\(saveError), \(saveError.localizedDescription)")
+                }
+            }
         }
     }
     
     // MARK: - Public Methods
     
     func fetch() {
-        dishManagedObjects = nil
-        guard let context = context else { return }
+        managedObjectModelArray = []
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dish")
         
         do {
-            dishManagedObjects = try (context.fetch(fetchRequest) as? [Dish] ?? [])
+            managedObjectModelArray = try (managedObjectContext.fetch(fetchRequest) as? [Dish] ?? [])
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
-    func save(forData data: [DishModelProtocol]?) {
-        guard let context = context, let lodedData = data else { return }
+    func fillData(forData data: [DishModelProtocol]) {
+        let lodedData = data
+        fetch()
         for value in lodedData {
-            let dish = Dish(context: context)
+            let dish = Dish(context: managedObjectContext)
             dish.name = value.name
             dish.desc = value.description
             dish.image = value.image
-            dishManagedObjects?.append(dish)
+            managedObjectModelArray.append(dish)
         }
     }
     
-    func saveContext() {
-        do {
-            try context?.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+    // Equatable
+    func remove(by model: DishModel) {
+        fetch()
+        for item in managedObjectModelArray {
+            let dishModel = createModel(from: item)
+            if model == dishModel {
+                managedObjectContext.delete(item)
+                break
+            }
         }
     }
     
-    func remove(at index: Int) {
-        guard let item = dishManagedObjects?[index] else { return }
-        context?.delete(item)
-        dishManagedObjects?.remove(at: index)
-    }
-    
-    func getCount() -> Int {
-        let count = dishManagedObjects?.count ?? 0
-        return count
+    func removeAll() {
+        fetch()
+        for item in managedObjectModelArray {
+            managedObjectContext.delete(item)
+        }
     }
     
     
-    // Fix forceunwrap!
-    func getItem(at index: Int) -> Dish {
-        return (dishManagedObjects?[index])!
+    private func createModel(from object: Dish) -> DishModel {
+        let model = DishModel(name: object.name,
+                              description: object.desc,
+                              imageName: object.image,
+                              ingredients: nil)
+        return model
     }
+    
 }

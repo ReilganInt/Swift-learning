@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol DishesModelProtocol {
     var dishes: [DishModel]? { get }

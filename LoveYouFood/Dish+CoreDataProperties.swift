@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension Dish {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Dish> {
