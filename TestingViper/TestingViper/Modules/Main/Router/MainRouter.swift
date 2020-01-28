@@ -9,9 +9,13 @@
 import Foundation
 
 class MainRouter: MainRouterProtocol {
-    let pos
+
     func presentPostsScreen(from view: MainViewProtocol, forPosts posts: [PostModel]) {
-        <#code#>
+        let detailViewController = DetailViewController()
+        detailViewController.configure(with: self)
+        if let sourceView = view as? MainViewController {
+            sourceView.navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
     
 }

@@ -82,6 +82,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		844AF06D23E02EA500113245 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		84C2ED3B23DF3AB800E23F23 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +131,7 @@
 		84C2ED5C23DF3B1A00E23F23 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				844AF06D23E02EA500113245 /* Detail */,
 				84C2ED5D23DF3B2500E23F23 /* Main */,
 			);
 			path = Modules;

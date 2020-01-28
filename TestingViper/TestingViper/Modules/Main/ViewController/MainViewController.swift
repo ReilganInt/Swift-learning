@@ -17,9 +17,9 @@ class MainViewController: UIViewController {
     
     // MARK: - UI properties
     
-    var randomButton: UIButton!
-    var newsButton: UIButton!
-    var dishButton: UIButton!
+    var randomButton: UIButton?
+    var newsButton: UIButton?
+    var dishButton: UIButton?
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
     // MARK: - Lifecycle methods
