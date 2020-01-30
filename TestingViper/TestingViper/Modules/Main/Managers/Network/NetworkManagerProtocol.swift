@@ -19,6 +19,6 @@ protocol NetworkManagerInputProtocol: class {
 protocol NetworkManagerOutputProtocol: class {
     
     // NetworkManager -> Interactor
-    func onPostsRetrieved(_ posts: [PostModel])
+    func onPostsRetrieved(_ posts: [PostModel], for type: Endpoints.Posts)
     func onError(with text: String)
 }

@@ -25,7 +25,7 @@ class NetworkManager: NetworkManagerInputProtocol {
                 case .success(let value):
                     do {
                         let model = try JSONDecoder().decode(PostsModel.self, from: value)
-                        self?.networkRequestHandler?.onPostsRetrieved(model.posts)
+                        self?.networkRequestHandler?.onPostsRetrieved(model.posts, for: type)
                     } catch let error as NSError {
                         self?.networkRequestHandler?.onError(with: "Invalid JSON. Error: \(error.localizedDescription)")
                     }

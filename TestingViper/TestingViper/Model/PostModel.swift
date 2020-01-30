@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct PostsModel: PostsModelProtocol, Decodable {
     var posts: [PostModel] = []
@@ -21,10 +22,11 @@ struct PostsModel: PostsModelProtocol, Decodable {
     }
 }
 
-struct PostModel: PostModelProtocol, Decodable {
+struct PostModel: PostModelProtocol, Decodable, Hashable {
     var title = ""
     var imageURLString = ""
     var text = ""
+    var identifier: Int!
     
     enum DishCodingKeys: String, CodingKey {
         case title
@@ -37,11 +39,35 @@ struct PostModel: PostModelProtocol, Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.imageURLString = try container.decode(String.self, forKey: .imageURLString)
         self.text = try container.decode(String.self, forKey: .text)
+        self.identifier = hashValue
     }
     
-    init(title: String, imageURLString: String, text: String) {
-        self.title = title
-        self.imageURLString = imageURLString
-        self.text = text
+    init(title: String?, imageURLString: String?, text: String?) {
+        self.title = title ?? ""
+        self.imageURLString = imageURLString ?? ""
+        self.text = text ?? ""
+        self.identifier = hashValue
+    }
+    
+}
+
+extension PostModel: ManagedObjectConvertible {
+    
+    func toManagedObject(in context: NSManagedObjectContext, with type: Endpoints.Posts) -> NSManagedObject? {
+        switch type {
+        case .dish:
+            let dish = DishMO.getOrCreateNew(with: identifier, from: context)
+            dish.title = title
+            dish.imageURLString = imageURLString
+            dish.text = text
+            return dish
+        case .news:
+            let news = NewsMO.getOrCreateNew(with: identifier, from: context)
+            news.title = title
+            news.imageURLString = imageURLString
+            news.text = text
+            return news
+        }
+
     }
 }

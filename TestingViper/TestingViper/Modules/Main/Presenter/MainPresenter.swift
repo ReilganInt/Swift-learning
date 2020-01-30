@@ -60,7 +60,7 @@ extension MainPresenter: MainInteractorOutputProtocol {
     
     // MARK: - MainInteractorOutputProtocol methods
     
-    func didRetrievePosts(_ posts: [PostModel]) {
+    func didRetrievePosts(_ posts: [PostModel], for type: Endpoints.Posts) {
         view?.hideLoading()
         DispatchQueue.main.async {
             guard let strongView = self.view else { return }
@@ -69,6 +69,7 @@ extension MainPresenter: MainInteractorOutputProtocol {
     }
     
     func onError(with text: String) {
+        view?.hideLoading()
         view?.showAlertView(with: text)
     }
     

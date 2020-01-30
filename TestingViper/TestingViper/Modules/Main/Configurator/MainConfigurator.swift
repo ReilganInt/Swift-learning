@@ -16,7 +16,8 @@ class MainConfigurator: MainConfiguratorProtocol {
         
         let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
         let interator: MainInteractorInputProtocol & NetworkManagerOutputProtocol = MainInteractor()
-        let dataBaseManager: DataBaseManagerInputProtocol = DataBaseManager()
+        let newsDatabaseManager: CoreDataManager<NewsMO, PostModel>? = CoreDataManager()
+        let dishDatabaseManager: CoreDataManager<DishMO, PostModel>? = CoreDataManager()
         let networkManager:NetworkManagerInputProtocol = NetworkManager()
         let router: MainRouterProtocol = MainRouter()
         
@@ -25,7 +26,8 @@ class MainConfigurator: MainConfiguratorProtocol {
         presenter.router = router
         presenter.interactor = interator
         interator.presenter = presenter
-        interator.dataBaseManager = dataBaseManager
+        interator.newsDatabaseManager = newsDatabaseManager
+        interator.dishDatabaseManager = dishDatabaseManager
         interator.networkManager = networkManager
         networkManager.networkRequestHandler = interator
         return viewController

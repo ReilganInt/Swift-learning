@@ -12,22 +12,17 @@ import UIKit
 class DetailConfigurator: DetailConfiguratorProtocol {
     
     static func createDetailModule() -> UIViewController {
-        let viewController = MainViewController()
+        let viewController = DetailViewController()
         
-        let presenter: MainPresenterProtocol & MainInteractorOutputProtocol = MainPresenter()
-        let interator: MainInteractorInputProtocol & NetworkManagerOutputProtocol = MainInteractor()
-        let dataBaseManager: DataBaseManagerInputProtocol = DataBaseManager()
-        let networkManager:NetworkManagerInputProtocol = NetworkManager()
-        let router: MainRouterProtocol = MainRouter()
+        let presenter: DetailPresenterProtocol & DetailInteractorOutputProtocol = DetailPresenter()
+        let interator: DetailInteractorInputProtocol = DetailInteractor()
+        let router: DetailRouterProtocol = DetailRouter()
         
         viewController.presenter = presenter
         presenter.view = viewController
         presenter.router = router
         presenter.interactor = interator
         interator.presenter = presenter
-        interator.dataBaseManager = dataBaseManager
-        interator.networkManager = networkManager
-        networkManager.networkRequestHandler = interator
         return viewController
     }
     

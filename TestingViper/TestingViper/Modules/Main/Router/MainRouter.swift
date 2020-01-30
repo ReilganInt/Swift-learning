@@ -15,7 +15,9 @@ class MainRouter: MainRouterProtocol {
     
     func showPosts(from view: MainViewProtocol, with posts: [PostModel]) {
         let detailViewController = DetailConfigurator.createDetailModule()
-        
+        if let detailView = detailViewController as? DetailViewProtocol {
+            detailView.posts = posts
+        }
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(detailViewController, animated: true)
         }

@@ -31,5 +31,14 @@ enum Endpoints {
             case .news: return "\(API.baseUrl)\(path)"
             }
         }
+        
+        public var name: String {
+            switch self {
+            case .dish:
+                return "Dish"
+            case .news:
+                return "News"
+            }
+        }
     }
 }

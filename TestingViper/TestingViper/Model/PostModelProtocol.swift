@@ -11,6 +11,7 @@ import Foundation
 protocol PostModelProtocol {
     var title: String { get }
     var imageURLString: String { get }
+    var text: String { get }
 }
 
 protocol PostsModelProtocol {

@@ -10,7 +10,8 @@ import Foundation
 
 protocol MainInteractorInputProtocol: class {
     var presenter: MainInteractorOutputProtocol? { get set }
-    var dataBaseManager: DataBaseManagerInputProtocol? { get set }
+    var newsDatabaseManager: CoreDataManager<NewsMO, PostModel>? { get set }
+    var dishDatabaseManager: CoreDataManager<DishMO, PostModel>? { get set }
     var networkManager: NetworkManagerInputProtocol? { get set }
     
     // Presenter -> Interactor
@@ -20,6 +21,6 @@ protocol MainInteractorInputProtocol: class {
 protocol MainInteractorOutputProtocol: class {
     
     // Interactor -> Presenter
-    func didRetrievePosts(_ posts: [PostModel])
+    func didRetrievePosts(_ posts: [PostModel], for type: Endpoints.Posts)
     func onError(with text: String)
 }
