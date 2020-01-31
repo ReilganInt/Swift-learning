@@ -17,7 +17,8 @@ class CoreDataService: CoreDataServiceProtocol {
     
     // MARK: - CoreDataServiceProtocol methods
     
-    var errorHandler: (Error) -> Void = {_ in
+    var errorHandler: (Error) -> Void = { error in
+        print(error.localizedDescription)
         // Replace this implementation
     }
     
@@ -34,7 +35,8 @@ class CoreDataService: CoreDataServiceProtocol {
     
     lazy var viewContext: NSManagedObjectContext = {
         let context:NSManagedObjectContext = self.persistentContainer.viewContext
-        context.automaticallyMergesChangesFromParent = true
+//        context.automaticallyMergesChangesFromParent = true
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
     }()
     
@@ -42,13 +44,14 @@ class CoreDataService: CoreDataServiceProtocol {
         return self.persistentContainer.newBackgroundContext()
     }()
     
-    func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        self.viewContext.perform {
-            block(self.viewContext)
+    func saveContext() {
+
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                errorHandler(error)
+            }
         }
-    }
-    
-    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        self.persistentContainer.performBackgroundTask(block)
     }
 }

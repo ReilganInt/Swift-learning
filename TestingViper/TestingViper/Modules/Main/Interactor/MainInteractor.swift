@@ -20,30 +20,7 @@ class MainInteractor: MainInteractorInputProtocol {
     // MARK: - MainInteractorInputProtocol methods
     
     func retrievePostList(for type: Endpoints.Posts) {
-//        do {
-            // network
-            // database
             networkManager?.retrievePostList(for: type)
-            
-            
-//
-//            if let postList = try dataBaseManager?.retrievePostList(for: type) {
-//                let postModelList = postList.map() {
-//                    return PostModel(title: $0.title!, imageURLString: $0.imageURLString!, text: $0.text!)
-//                }
-//                if postModelList.isEmpty {
-//                    networkManager?.retrievePostList(for: type)
-//                } else {
-//                    presenter?.didRetrievePosts(postModelList)
-//                }
-//            } else {
-//                networkManager?.retrievePostList(for: type)
-//            }
-//        } catch {
-//            presenter?.onError(with: "No internet connection. No data in local data base. :(")
-//        }
-//
-//    }
     }
 }
 
@@ -73,11 +50,4 @@ extension MainInteractor: NetworkManagerOutputProtocol {
     }
 }
         
-//        for postModel in posts {
-//            do {
-//                try dataBaseManager?.savePost(title: postModel.title, imageURLString: postModel.imageURLString, text: postModel.text)
-//            } catch  {
-//                
-//            }
-//        }
         

@@ -16,7 +16,5 @@ protocol ManagedObjectProtocol {
 
 extension ManagedObjectProtocol where Self: NSManagedObject {
     
-    static func getOrCreateNew(with id: Int, from context: NSManagedObjectContext) -> Self {
-        return NSManagedObject(context: context) as! Self
-    }
+    
 }

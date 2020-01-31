@@ -24,29 +24,29 @@ class CoreDataManager<ManagedEntity, Entity>: CoreDataManagerProtocol where
     func get(with predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, fetchLimit: Int?,
              completion: @escaping (Result<[Entity], Error>) -> Void) {
         
-        coreData.performForegroundTask { context in
-            do {
-                let fetchRequest = ManagedEntity.fetchRequest()
-                fetchRequest.predicate = predicate
-                fetchRequest.sortDescriptors = sortDescriptors
-                if let fetchLimit = fetchLimit {
-                    fetchRequest.fetchLimit = fetchLimit
-                }
-                let results = try context.fetch(fetchRequest) as? [ManagedEntity]
-                let items: [Entity] = results?.compactMap { $0.toEntity() as? Entity } ?? []
-                completion(.success(items))
-            } catch {
-                let fetchError = CoreDataManagerError.cannotFetch("Cannot fetch error: \(error))")
-                completion(.failure(fetchError))
+        do {
+            let context = coreData.viewContext
+            let fetchRequest = ManagedEntity.fetchRequest()
+            fetchRequest.predicate = predicate
+            fetchRequest.sortDescriptors = sortDescriptors
+            if let fetchLimit = fetchLimit {
+                fetchRequest.fetchLimit = fetchLimit
             }
+            let results = try context.fetch(fetchRequest) as? [ManagedEntity]
+            let items: [Entity] = results?.compactMap { $0.toEntity() as? Entity } ?? []
+            completion(.success(items))
+        } catch {
+            let fetchError = CoreDataManagerError.cannotFetch("Cannot fetch error: \(error))")
+            completion(.failure(fetchError))
         }
+
     }
     
     func save(entities: [Entity], with type: Endpoints.Posts, completion: @escaping (Error?) -> Void) {
-        coreData.performBackgroundTask { context in
-            print("here")
-            
+        for entity in entities {
+            _ = entity.toManagedObject(in: coreData.viewContext, with: type)
         }
+        coreData.saveContext()
     }
     
     

@@ -20,7 +20,7 @@ enum Endpoints {
         
         public var path: String {
             switch self {
-            case .dish: return "/postsDish.json?alt=media&token=2ca54093-f42c-448c-9c41-2c158a0e47ca"
+            case .dish: return "/postsDish.json?alt=media&token=817cc5ed-d283-457e-97a1-f45393235a49"
             case .news: return "/postsNews.json?alt=media&token=31f9403f-1ec9-4f11-9ef6-e10dd18d20e5"
             }
         }

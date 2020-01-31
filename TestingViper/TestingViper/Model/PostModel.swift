@@ -56,18 +56,19 @@ extension PostModel: ManagedObjectConvertible {
     func toManagedObject(in context: NSManagedObjectContext, with type: Endpoints.Posts) -> NSManagedObject? {
         switch type {
         case .dish:
-            let dish = DishMO.getOrCreateNew(with: identifier, from: context)
+            let dish = DishMO(context: context)
             dish.title = title
             dish.imageURLString = imageURLString
             dish.text = text
+            dish.identifier = Int64(exactly: identifier) ?? 0
             return dish
         case .news:
-            let news = NewsMO.getOrCreateNew(with: identifier, from: context)
+            let news = NewsMO(context: context)
             news.title = title
             news.imageURLString = imageURLString
             news.text = text
+            news.identifier = Int64(exactly: identifier) ?? 0
             return news
         }
-
     }
 }
